@@ -1,0 +1,309 @@
+:root {
+    --back-theme: #933333;
+    --back-theme-transit: #7e2a2a;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+}
+nav {
+    background-color: var(--back-theme);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 70px;
+    max-width: 95px;
+    height: 100vh;
+    float: left;
+    position: relative;
+    z-index: 1;
+}
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+li {
+    padding-bottom: 25px;
+}
+button {
+    background-color: var(--back-theme);
+    color: var(--text-cred);
+    outline: var(--text-cred);
+    border: 2px solid var(--text-cred);
+    border-radius: 12px;
+    padding-block: 8px;
+    font-size: 18px;
+    width: 140px;
+    transition: all ease-in-out 0.2s;
+}
+button:hover {
+    font-weight: bolder;
+    color: var(--back-theme);
+    background-color: var(--text-cred);
+}
+a {
+    text-decoration: none;
+    font-size: 18px;
+    color: inherit;
+    transition: text-decoration ease-in-out 0.3s;
+}
+figcaption {
+    background-color: lightgrey;
+    width: 100%;
+    border-radius: inherit;
+}
+footer {
+    height: 75px;
+    background-color: gray;
+    width: 100%;
+    bottom: 0;
+    position: relative;
+}
+
+.align-text {
+    text-align: center;
+}
+img.list-img {
+    width: 150px;
+    height: 150px;
+}
+div#img-frame {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+img#single-img {
+    width: 225px;
+    height: 225px;
+    border-radius: 4px;
+}
+.main-sec {
+    margin-block: 16px;
+    margin-left: 85px;
+    margin-right: 15px;
+}
+.divider {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.navi {
+    margin-top: 75px;
+}
+.navcons {
+    width: 32px;
+    height: 32px;
+    transition: transform ease-in-out 0.3s;
+}
+.navcons:hover {
+    transform: scale(1.3);
+}
+.nav-links:last-child {
+    padding-top: 75px;
+}
+.head-fig {
+    width: 100%;
+    background-color: gray;
+    height: 120px;
+}
+.nav-fig {
+    background-color: gray;
+    width: 600px;
+    height: 120px;
+}
+.sub-sec {
+    display: flex;
+    justify-content: space-between;
+}
+.notifs {
+    align-items: flex-start;
+}
+.notif-item {
+    padding-bottom: 5px;
+}
+.spacer {
+    padding-left: 200px;
+}
+
+/* Tutors */
+.main-list {
+    margin-left: 36px;
+}
+.tutor-nav-fig {
+    background-color: gray;
+    width: 900px;
+    height: 175px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 16px;
+}
+.tutor-fig-img {
+    width: 175px;
+    height: 175px;
+    border-radius: inherit;
+}
+.tutor-details {
+    align-items: flex-start;
+    margin: 16px;
+}
+
+/* One Tutor */
+.tutor-one {
+    background-color: initial;
+}
+.tutor-one-details {
+    align-items: flex-start;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.book-form {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+.book-btn {
+    background-color: white;
+    border: 2px solid var(--back-theme);
+    border-radius: 28px;
+    padding-block: 16px;
+    font-size: 18px;
+    width: 140px;
+    transition: all ease-in-out 0.2s;
+}
+.book-btn:hover {
+    background-color: var(--back-theme-transit);
+    color: white;
+    border: 2px solid white;
+}
+
+/* Account settings */
+.account-details {
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+#acc-dets {
+    width: 600px;
+    align-items: flex-start;
+}
+.update-btn {
+    background-color: inherit;
+    border: 2px solid var(--back-theme);
+    border-radius: 28px;
+    padding-block: 16px;
+    font-size: 18px;
+    width: 180px;
+    transition: all ease-in-out 0.2s;
+}
+.update-btn:hover {
+    background-color: var(--back-theme-transit);
+    color: white;
+    border: 2px solid white;
+}
+
+
+@media screen and (max-width: 600px) {
+    input {
+        max-width: 430px;
+        min-width: 300px;
+    }
+    select {
+        max-width: 430px;
+        min-width: 300px;
+    }
+
+    nav {
+        min-width: 30px;
+        max-width: 50px;
+        height: 100vh;
+    }
+    ul {
+        margin-top: 45px;
+    }
+    .main-sec {
+        margin-block: 16px;
+        margin-left: 45px;
+        margin-right: 5px;
+    }
+    .sub-sec {
+        display: flex;
+        flex-direction: column;
+    }
+    footer {
+        height: 100px;
+        background-color: gray;
+        width: 100%;
+        bottom: 0;
+    }
+    .navi {
+        margin-top: 75px;
+    }
+
+    .navcons {
+        width: 24px;
+        height: 24px;
+    }
+    .nav-fig {
+        background-color: gray;
+        width: 270px;
+        height: 100px;
+    }
+    .notifs {
+        margin-top: 8px;
+    }
+
+    /* Tutors */
+    .main-list {
+        align-items: flex-start;
+    }
+    .tutor-nav-fig {
+        background-color: gray;
+        width: 320px;
+        height: 100px;
+    }
+    .tutor-fig-img {
+        width: 100px;
+        height: 100px;
+        border-radius: inherit;
+    }
+    .tutor-details {
+        align-items: flex-start;
+        margin: 12px 12px 4px 12px;
+        font-size: 10px;
+        height: 100px;
+    }
+    .tutor-details li {
+        padding-bottom: 5px;
+    }
+
+    /* One Tutor */
+    .tutor-one-details {
+        margin-left: 15px;
+    }
+    img#single-img {
+        width: 125px;
+        height: 125px;
+        border-radius: 4px;
+    }
+    .book-btn {
+        background-color: var(--back-theme);
+        color: white;
+    }
+
+    /* Account settings */
+    .account-details {
+        align-items: center;
+        margin-left: 15px;
+    }
+    #acc-dets {
+        width: 100%;
+        align-items: flex-start;
+    }
+}

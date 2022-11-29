@@ -1,0 +1,67 @@
+:root {
+    --back-theme: #933333;
+    --back-theme-transit: #7e2a2a;
+    --text-cred: #fff;
+}
+
+body {
+    margin: 0;
+    background-color: var(--back-theme);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1,h2,h3,h4,h5 {
+    color: var(--text-cred);
+}
+input {
+    max-width: 750px;
+    min-width: 500px;
+    background-color: white !important;
+}
+select {
+    max-width: 750px;
+    min-width: 500px;
+}
+button {
+    background-color: var(--back-theme);
+    color: var(--text-cred);
+    outline: var(--text-cred);
+    border: 2px solid var(--text-cred);
+    border-radius: 12px;
+    padding-block: 8px;
+    font-size: 18px;
+    width: 140px;
+    transition: all ease-in-out 0.2s;
+}
+button:hover {
+    font-weight: bolder;
+    color: var(--back-theme);
+    background-color: var(--text-cred);
+}
+a {
+    text-decoration: none;
+    color: var(--text-cred);
+    font-size: 18px;
+    transition: text-decoration ease-in-out 0.3s;
+}
+a:hover {
+    color: var(--text-cred);
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+    input {
+        max-width: 450px;
+        min-width: 300px;
+    }
+    select {
+        max-width: 450px;
+        min-width: 300px;
+    }
+}
+
+.active {
+    text-decoration: underline;
+}
