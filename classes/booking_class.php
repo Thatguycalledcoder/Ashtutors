@@ -19,13 +19,23 @@ class Booking_class extends db_connection
 
 
 	//--SELECT--//	
-    function getBookings($s_id) {
+    function getStudentBookings($s_id) {
         $sql = "SELECT * FROM booking WHERE student_id = '$s_id'";
         return $this->run_query($sql);
     }
 
-    function getBooking($s_id, $t_id) {
+    function getStudentBooking($s_id, $t_id) {
 		$sql = "SELECT * FROM booking WHERE student_id = '$s_id' AND tutor_id = '$t_id'";
+		return $this->run_query($sql);
+	}
+
+	function getTutorBookings($t_id) {
+		$sql = "SELECT * FROM booking WHERE tutor_id = '$t_id'";
+		return $this->run_query($sql);
+	}
+
+	function getBookingDays() {
+		$sql = "SELECT * FROM book_days";
 		return $this->run_query($sql);
 	}
 

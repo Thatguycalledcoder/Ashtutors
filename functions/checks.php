@@ -1,7 +1,13 @@
 <?php
-    function checkLogin() {
-        if (!(isset($_SESSION["login_sts"]))) {
+    function checkLoginStudent() {
+        if (!(isset($_SESSION["login_sts_student"]))) {
             header("Location: dirname(__FILE__)./../login/login.php");
+        }
+    }
+
+    function checkLoginTutor() {
+        if (!(isset($_SESSION["login_sts_student"]))) {
+            header("Location: dirname(__FILE__)./../login/logintutor.php");
         }
     }
 

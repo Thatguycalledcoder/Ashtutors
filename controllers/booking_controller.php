@@ -15,33 +15,61 @@ function addBooking($s_id, $t_id, $hours, $time, $date) {
 
 
 //--SELECT--//
-function getBookings($s_id) {
+function getStudentBookings($s_id) {
     $crud = new Booking_class;
-    $request = $crud->getBookings($s_id);
+    $request = $crud->getStudentBookings($s_id);
 
     if($request){
-        $record = $crud->fetch();
-        if(!empty($record)){
-            return $record;
-        }else{
-            return false;
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
         }
+        return $posts;
     }else{
         return false;
     }
 }
 
-function getBooking($s_id, $t_id) {
+function getStudentBooking($s_id, $t_id) {
     $crud = new Booking_class;
-    $request = $crud->getBooking($s_id, $t_id);
+    $request = $crud->getStudentBooking($s_id, $t_id);
 
     if($request){
-        $record = $crud->fetch();
-        if(!empty($record)){
-            return $record;
-        }else{
-            return false;
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
         }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
+function getTutorBookings($t_id) {
+    $crud = new Booking_class;
+    $request = $crud->getTutorBookings($t_id);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
+function getBookingDays() {
+    $crud = new Booking_class;
+    $request = $crud->getBookingDays();
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
     }else{
         return false;
     }

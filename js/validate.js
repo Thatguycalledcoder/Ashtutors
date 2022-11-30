@@ -175,7 +175,7 @@ const validateLoginTutor = (e) => {
             async: false,
             data: {
                 tutor_email: email.val(),
-                tutor_pass: password.val(),
+                tutor_password: password.val(),
                 login_tutor: "login_tutor"
             }, // data to send in ajax format or querystring format
             datatype: 'json',
@@ -187,8 +187,8 @@ const validateLoginTutor = (e) => {
             },
      
             complete: function(response) {
-                if (response == "success") {
-                    location.replace("../index.php");
+                if (response) {
+                    location.replace("../view/tutor/index.php");
                 }
                 else {
                     location.replace("logintutor.php");

@@ -33,10 +33,7 @@ if (isset($_POST["login_student"])) {
             // Getting customer details
             $_SESSION["id"] = $record["student_id"];
             $_SESSION["name"] = $record["student_fname"] . " " . $record["student_lname"];
-            $_SESSION["login_sts"] = true;
-
-            if ($record["user_role"] == 1)
-                $_SESSION["admin_auth"] = true;
+            $_SESSION["login_sts_student"] = true;
             
             echo "success";
             header("location: ../index.php");
@@ -54,7 +51,7 @@ if (isset($_POST["login_student"])) {
 // Tutor login
 elseif (isset($_POST["login_tutor"])) {
     $email = $_POST["tutor_email"];
-    $password = $_POST["tutor_pass"];
+    $password = $_POST["tutor_password"];
 
     $num_errors = 0;
     $errors = array();
@@ -77,16 +74,11 @@ elseif (isset($_POST["login_tutor"])) {
         if ($record) {
             // Getting customer details
             $_SESSION["id"] = $record["tutor_id"];
-            $_SESSION["name"] = $record["tutor_name"];
-            $_SESSION["email"] = $record["tutor_email"];
-            $_SESSION["contact"] = $record["tutor_contact"];
-            $_SESSION["login_sts"] = true;
-
-            if ($record["user_role"] == 1)
-                $_SESSION["admin_auth"] = true;
+            $_SESSION["name"] = $record["tutor_fname"] . " " . $record["tutor_lname"];
+            $_SESSION["login_sts_tutor"] = true;
             
-            echo json_encode(["success"]);
-            header("location: ../index.php");
+            echo "success";
+            header("location: ../view/tutor/index.php");
         } else {
             $_SESSION["log_msg_tutor"] = "Incorrect login credentials. Try again!";
             header("location: logintutor.php");

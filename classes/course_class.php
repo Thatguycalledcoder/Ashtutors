@@ -35,7 +35,7 @@ class Course_class extends db_connection
 	function getCoursesAndTutors() {
 		$sql = "SELECT course_id, course_name, major.major_name, COUNT(course_id) AS 'num_tutors' 
 				FROM course, major WHERE course.course_id IN 
-					(SELECT course_id FROM tutor_courses WHERE tutor_id IN 
+					(SELECT course_id FROM tutor_available_courses WHERE tutor_id IN 
 						(SELECT tutor_id FROM tutor WHERE tutor_availability = 1) ) 
 					AND course_major = major.major_id 
 					GROUP BY course.course_id;";

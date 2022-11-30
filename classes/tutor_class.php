@@ -17,18 +17,13 @@ class Tutor_class extends db_connection
 		return $this->run_query($sql);
 	}
 
-	function registerTutorCourse($tutor_id, $course_id) {
-		$sql = "INSERT INTO tutor_courses VALUES('$tutor_id', '$course_id')";
+	function registerTutorCourse($tutor_id, $course_id, $rate) {
+		$sql = "INSERT INTO tutor_available_courses VALUES('$tutor_id', '$course_id', '$rate')";
 		return $this->run_query($sql);
 	}
 
-	function registerTutorBookDays($tutor_id, $bookday_id) {
-		$sql = "INSERT INTO tutor_book_day VALUES('$tutor_id', '$bookday_id')";
-		return $this->run_query($sql);
-	}
-
-	function registerTutorBookTimes($tutor_id, $booktime) {
-		$sql = "INSERT INTO tutor_book_time VALUES('$tutor_id', '$booktime')";
+	function registerTutorAvailableBookings($tutor_id, $bookday_id, $starttime, $endtime) {
+		$sql = "INSERT INTO tutor_available_booking VALUES('$tutor_id', '$bookday_id', '$starttime', '$endtime')";
 		return $this->run_query($sql);
 	}
 
@@ -44,40 +39,33 @@ class Tutor_class extends db_connection
 	}
 
 	function getTutors() {
-		$sql = "SELECT * FROM tutors";
+		$sql = "SELECT * FROM tutor";
 		return $this->run_query($sql);
 	}
 
-	function getTutor($tutor_id) {
-		$sql = "SELECT * FROM tutors WHERE tutor_id = '$tutor_id'";
+	function getTutorDetails($tutor_id) {
+		$sql = "SELECT * FROM tutor WHERE tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}
 
-	function getTutorBookTimes($tutor_id) {
-		$sql = "SELECT * FROM tutor_book_time
-				WHERE tutor_id = '$tutor_id'";
-		return $this->run_query($sql);
-	}
-
-	function getTutorBookDays($tutor_id) {
-		$sql = "SELECT bd.bookday_id, bd.book_day FROM tutor_book_day tbd
-				JOIN book_days bd
-				WHERE tbd.tutor_id = '$tutor_id' AND tbd.bookday_id = bd.bookday_id";
+	function getTutorAvailableDays($tutor_id) {
+		$sql = "SELECT tab.*, bd.book_day 
+				FROM tutor_available_booking tab, book_days bd 
+				WHERE tab.bookday_id = bd.bookday_id AND tab.tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}
 
 	function getTutorCourses($tutor_id) {
-		$sql = "SELECT c.course_id, c.course_name FROM tutor_courses tc
-				JOIN course c
-				WHERE tc.tutor_id = '$tutor_id' AND tc.course_id = c.course_id";
+		$sql = "SELECT tab.*, c.course_name FROM tutor_available_courses tab, course c 
+				WHERE tab.course_id = c.course_id AND tab.tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}
 
 	//--UPDATE--//
-	function updateTutorInfo($id, $name, $email, $password, $country, $year, $major, $contact, $image) {
-		$sql = "UPDATE tutor SET tutor_name = '$name' AND tutor_email = '$email' AND tutor_pass = '$password' 
-		AND tutor_country = '$country' AND tutor_year = '$year' AND tutor_major = '$major' AND tutor_contact = '$contact'
-		AND tutor_image = '$image' WHERE tutor_id = '$id'";
+	function updateTutorInfo($id, $fname, $lname, $email, $country, $year, $major, $contact) {
+		$sql = "UPDATE tutor SET tutor_fname = '$fname', tutor_lname = '$lname', tutor_email = '$email',
+				tutor_country = '$country', tutor_year = '$year', tutor_major = '$major', tutor_contact = '$contact'
+				WHERE tutor_id = '$id'";
 		return $this->run_query($sql);
 	}
 

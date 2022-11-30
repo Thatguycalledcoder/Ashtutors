@@ -1,7 +1,7 @@
 <?php
     session_start();
     require dirname(__FILE__)."/functions/checks.php";
-    checkLogin();
+    checkLoginStudent();
     checkLogout();
 ?>
 

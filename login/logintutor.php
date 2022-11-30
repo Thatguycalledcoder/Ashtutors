@@ -36,7 +36,7 @@ session_start();
         }
         ?>
     </header>
-    <form class="mx-5 my-4" method="POST" id="form" name="fname" action="./loginprocess.php">
+    <form class="mx-5 my-4" method="POST" id="form" action="./loginprocess.php">
         <div class="form-floating mb-5">
             <input type="email" class="form-control" id="floatingEmail" name="tutor_email" placeholder="John Doe" required>
             <label for="floatingEmail">Email address</label>

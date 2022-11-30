@@ -1,11 +1,9 @@
 <?php
 session_start();
-require_once dirname(__FILE__) . "/../functions/checks.php";
-require_once dirname(__FILE__) . "/../functions/major_course_fnx.php";
-require_once dirname(__FILE__)."/../controllers/student_controller.php";
-checkLoginStudent();
+require_once dirname(__FILE__) . "/../../functions/major_course_fnx.php";
+require_once dirname(__FILE__)."/../../controllers/tutor_controller.php";
 
-$info = getStudentDetails($_SESSION["id"]);
+$info = getTutorDetails($_SESSION["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +15,7 @@ $info = getStudentDetails($_SESSION["id"]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./../css/main.css">
+    <link rel="stylesheet" href="./../../css/tutor.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous" async defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -25,36 +23,20 @@ $info = getStudentDetails($_SESSION["id"]);
 </head>
 
 <body>
-    <nav class="nav">
-        <ul class="navi">
-            <li class="nav-links">
-                <a href="./../index.php">
-                    <img class="navcons" src="./../images/icons/home-icon.svg" alt="Home icon" title="Home">
-                </a>
+<nav>
+        <ul>
+            <li>
+                <a href="index.php">Home</a>
             </li>
-            <li class="nav-links">
-                <a href="./courses.php">
-                    <img class="navcons" src="./../images/icons/course-icon.svg" alt="Course icon" title="Courses">
-                </a>
+            <li>
+                <a href="booksettings.php">Booking Settings</a>
             </li>
-            <li class="nav-links">
-                <a href="./tutors.php">
-                    <img class="navcons" src="./../images/icons/tutor-icon.svg" alt="Tutor icon" title="Tutors">
-                </a>
+            <li>
+                <a href="tutorprofile.php">Profile</a>
             </li>
-            <li class="nav-links">
-                <a href="./bookings.php">
-                    <img class="navcons" src="./../images/icons/booking-icon.svg" alt="Booking icon" title="Bookings">
-                </a>
-            </li>
-            <li class="nav-links">
-                <a href="./settings.php">
-                    <img class="navcons" src="./../images/icons/settings-icon.svg" alt="Settings icon" title="Account Settings">
-                </a>
-            </li>
-            <li class="nav-links">
-                <a href="./../index.php?logout=1">
-                    <img class="navcons" src="./../images/icons/logout-icon.svg" alt="Logout icon" title="Logout">
+            <li>
+                <a href="index.php?logout=1">
+                    Logout
                 </a>
             </li>
         </ul>
@@ -78,7 +60,7 @@ $info = getStudentDetails($_SESSION["id"]);
             <figure>
                 <div id="img-frame"> 
                     <button type="button" data-bs-toggle="modal" data-bs-target="#changeImageModal">
-                        <img id="single-img" src="<?php echo $info["student_image"] ?>" alt="Profile image">
+                        <img id="single-img" src="<?php echo $info["tutor_image"] ?>" alt="Profile image">
                     </button>
                     <div class="modal fade" id="changeImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -87,7 +69,7 @@ $info = getStudentDetails($_SESSION["id"]);
                                 <h5 class="modal-title" id="exampleModalLabel">Change profile image</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="../actions/student_actions.php" enctype="multipart/form-data" method="POST">
+                            <form action="../../actions/tutor_actions.php" enctype="multipart/form-data" method="POST">
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label for="img" class="col-form-label">Upload image:</label>
@@ -95,7 +77,7 @@ $info = getStudentDetails($_SESSION["id"]);
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <input type="hidden" name="stud_id" value="<?php echo $_SESSION["id"] ?>">
+                                    <input type="hidden" name="tutor_id" value="<?php echo $_SESSION["id"] ?>">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" name="update_image" class="btn btn-success">Upload Image</button>
                                 </div>
@@ -106,26 +88,26 @@ $info = getStudentDetails($_SESSION["id"]);
                 </div>
                 <figcaption class="tutor-one">
                     <ul class="account-details">
-                        <form class="book-form" action="../actions/student_actions.php" method="POST">
+                        <form class="book-form" action="../../actions/tutor_actions.php" method="POST">
                             <li>
                                 First Name:
-                               <input type="text" name="new_fname" value="<?php echo $info["student_fname"] ?>" required>
+                               <input type="text" name="new_fname" value="<?php echo $info["tutor_fname"] ?>" required>
                             </li>
                             <li>
                                 Last Name:
-                                <input type="text" name="new_lname" value="<?php echo $info["student_lname"] ?>" required>
+                                <input type="text" name="new_lname" value="<?php echo $info["tutor_lname"] ?>" required>
                             </li>
                             <li>
                                 Email:
-                                <input type="email" name="new_email" value="<?php echo $info["student_email"] ?>" required>
+                                <input type="email" name="new_email" value="<?php echo $info["tutor_email"] ?>" required>
                             </li>
                             <li>
                                 Country:
-                                <input type="text" name="new_country" value="<?php echo $info["student_country"] ?>" required>
+                                <input type="text" name="new_country" value="<?php echo $info["tutor_country"] ?>" required>
                             </li>
                             <li>
                                 Year:
-                                <input type="text" name="new_year" value="<?php echo $info["student_year"] ?>" required>
+                                <input type="text" name="new_year" value="<?php echo $info["tutor_year"] ?>" required>
                             </li>
                             <li>
                                 Major:
@@ -137,9 +119,9 @@ $info = getStudentDetails($_SESSION["id"]);
                             </li>
                             <li>
                                 Contact:
-                                <input type="tel" name="new_contact" value="<?php echo $info["student_contact"] ?>" required>
+                                <input type="tel" name="new_contact" value="<?php echo $info["tutor_contact"] ?>" required>
                             </li>
-                            <input type="hidden" name="stud_id" value="<?php echo $_SESSION["id"] ?>">
+                            <input type="hidden" name="tutor_id" value="<?php echo $_SESSION["id"] ?>">
                             <button type="submit" name="update_profile" class="update-btn">Update Profile</button>
                         </form>
                     </ul>
