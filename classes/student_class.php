@@ -35,10 +35,10 @@ class Student_class extends db_connection
 	}
 
 	//--UPDATE--//
-	function updateStudentInfo($id, $name, $email, $password, $country, $year, $major, $contact, $image) {
-		$sql = "UPDATE student SET student_name = '$name' AND student_email = '$email' AND student_pass = '$password' 
-		AND student_country = '$country' AND student_year = '$year' AND student_major = '$major' AND student_contact = '$contact'
-		AND student_image = '$image' WHERE student_id = '$id'";
+	function updateStudentInfo($id, $fname, $lname, $email, $country, $year, $major, $contact) {
+		$sql = "UPDATE student SET student_fname = '$fname', student_lname = '$lname', student_email = '$email', student_country = '$country' 
+	, student_year = '$year', student_major = '$major', student_contact = '$contact'
+		WHERE student_id = '$id'";
 		return $this->run_query($sql);
 	}
 

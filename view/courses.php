@@ -1,6 +1,7 @@
 <?php
     session_start();
-    require dirname(__FILE__)."/../functions/checks.php";
+    require_once dirname(__FILE__)."/../functions/checks.php";
+    require_once dirname(__FILE__)."/../functions/student_view_fxn.php";
     // checkLogin();
 ?>
 
@@ -55,30 +56,15 @@
             </figure>
             <section class="main-sec">
                 <h1>
-                    All Courses
+                    Available Courses
                 </h1>
             </section>
         </header>
         <section class="main-sec">
             <ul>
-                <li>
-                    <figure class="nav-fig">
-                        <img src="" alt="">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="nav-fig">
-                        <img src="" alt="">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="nav-fig">
-                        <img src="" alt="">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
+                <?php
+                    studentDisplayCourses();
+                ?>
             </ul>
         </section>
         <footer>

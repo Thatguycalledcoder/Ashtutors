@@ -32,9 +32,7 @@ if (isset($_POST["login_student"])) {
         if ($record) {
             // Getting customer details
             $_SESSION["id"] = $record["student_id"];
-            $_SESSION["name"] = $record["student_name"];
-            $_SESSION["email"] = $record["student_email"];
-            $_SESSION["contact"] = $record["student_contact"];
+            $_SESSION["name"] = $record["student_fname"] . " " . $record["student_lname"];
             $_SESSION["login_sts"] = true;
 
             if ($record["user_role"] == 1)
@@ -53,14 +51,8 @@ if (isset($_POST["login_student"])) {
     }
     return;
 }
-else {
-    $_SESSION["log_msg_student"] = "Please use the form!";
-    header("location: login.php");
-    return;
-}
-
 // Tutor login
-if (isset($_POST["login_tutor"])) {
+elseif (isset($_POST["login_tutor"])) {
     $email = $_POST["tutor_email"];
     $password = $_POST["tutor_pass"];
 
@@ -108,7 +100,8 @@ if (isset($_POST["login_tutor"])) {
 }
 else {
     $_SESSION["log_msg_tutor"] = "Please use the form!";
-    header("location: logintutor.php");
+    $_SESSION["log_msg_student"] = "Please use the form!";
+    header("location: login.php");
     return;
 }
 

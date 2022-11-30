@@ -97,14 +97,8 @@ if (isset($_POST["register_student"])) {
     }
     return;
 }
-else {
-    $_SESSION["reg_msg_student"] = "Please use the form!";
-    header("location: register.php");
-    return;
-}
-
 // Tutor register
-if (isset($_POST["register_tutor"])) {
+elseif (isset($_POST["register_tutor"])) {
     $fname = $_POST["tutor_fname"];
     $lname = $_POST["tutor_lname"];
     $email = $_POST["tutor_email"];
@@ -194,6 +188,7 @@ if (isset($_POST["register_tutor"])) {
 }
 else {
     $_SESSION["reg_msg_tutor"] = "Please use the form!";
-    header("location: registertutor.php");
+    $_SESSION["reg_msg_student"] = "Please use the form!";
+    header("location: register.php");
 }
 ?>

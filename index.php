@@ -1,7 +1,7 @@
 <?php
     session_start();
     require dirname(__FILE__)."/functions/checks.php";
-    // checkLogin();
+    checkLogin();
     checkLogout();
 ?>
 
@@ -60,7 +60,7 @@
                 </h1>
                 <br>
                 <section class="sub-sec">
-                    <h3>Welcome, David</h3>
+                    <h3>Welcome, <?php echo $_SESSION["name"] ?>.</h3>
                     <ul class="notifs">
                         <li class="notif-item">
                             <p>

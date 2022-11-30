@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once dirname(__FILE__)."/../functions/major_course_fnx.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -53,13 +55,9 @@ session_start();
             <div class="form-floating mb-5">
                 <select class="form-control" id="floatingMajor" name="tutor_major" required>
                     <label for="floatingMajor">Major</label>
-                    <option value="null">Select your major...</option>
-                    <option value="Business Administration">Business Administration</option>
-                    <option value="1">Computer Science</option>
-                    <option value="Computer Engineering">Computer Engineering</option>
-                    <option value="Electrical and Electronics Engineering">Electrical and Electronics Engineering</option>
-                    <option value="Management Information Systems">Management Information Systems</option>
-                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <?php
+                        displayMajorOptions();
+                    ?>
                 </select>
             </div>
             <div class="form-floating mb-5">

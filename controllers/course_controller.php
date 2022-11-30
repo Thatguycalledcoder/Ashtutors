@@ -13,6 +13,15 @@ function addCourse($name, $dept) {
         return false;
 }
 
+function addMajor($name) {
+    $crud = new Course_class;
+    $request = $crud->addMajor($name);
+
+    if($request) 
+        return true;
+    else
+        return false;
+}
 
 //--SELECT--//
 function getCourses() {
@@ -20,12 +29,11 @@ function getCourses() {
     $request = $crud->getCourses();
 
     if($request){
-        $record = $crud->fetch();
-        if(!empty($record)){
-            return $record;
-        }else{
-            return false;
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
         }
+        return $posts;
     }else{
         return false;
     }
@@ -47,9 +55,69 @@ function getCourse($id) {
     }
 }
 
+function getCoursesAndTutors() {
+    $crud = new Course_class;
+    $request = $crud->getCoursesAndTutors();
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
 function checkCourse($name) {
     $crud = new Course_class;
     $request = $crud->checkCourse($name);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
+function getCoursesByMajor($name) {
+    $crud = new Course_class;
+    $request = $crud->getCoursesByMajor($name);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
+function getMajors() {
+    $crud = new Course_class;
+    $request = $crud->getMajors();
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
+function getMajor($id) {
+    $crud = new Course_class;
+    $request = $crud->getMajor($id);
 
     if($request){
         $record = $crud->fetch();
@@ -63,7 +131,6 @@ function checkCourse($name) {
     }
 }
 
-
 //--UPDATE--//
 function updateCourse($id, $name, $dept) {
     $crud = new Course_class;
@@ -75,11 +142,30 @@ function updateCourse($id, $name, $dept) {
         return false;
 }
 
+function updateMajor($id, $name) {
+    $crud = new Course_class;
+    $request = $crud->updateMajor($id, $name);
+
+    if($request) 
+        return true;
+    else
+        return false;
+}
 
 //--DELETE--//
 function removeCourse($id) {
     $crud = new Course_class;
     $request = $crud->removeCourse($id);
+
+    if($request) 
+        return true;
+    else
+        return false;
+}
+
+function removeMajor($id) {
+    $crud = new Course_class;
+    $request = $crud->removeMajor($id);
 
     if($request) 
         return true;

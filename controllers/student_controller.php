@@ -65,9 +65,9 @@ function getStudentDetails($student_id) {
 
 
 //--UPDATE--//
-function updateStudentInfo($id, $name, $email, $password, $country, $year, $major, $contact, $image, $user_role) {
+function updateStudentInfo($id, $fname, $lname, $email, $country, $year, $major, $contact) {
     $crud = new Student_class;
-    $request = $crud->updateStudentInfo($id, $name, $email, $password, $country, $year, $major, $contact, $image, $user_role);
+    $request = $crud->updateStudentInfo($id, $fname, $lname, $email, $country, $year, $major, $contact);
 
     if($request) 
         return true;
