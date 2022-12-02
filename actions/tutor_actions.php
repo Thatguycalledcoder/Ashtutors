@@ -39,7 +39,7 @@
 
     }
     elseif (isset($_POST["update_image"])) {
-        $id = $_POST["stud_id"];
+        $id = $_POST["tutor_id"];
         
         $root_dir = "..\\images\\tutor\\";
         $upload_root_dir = "../images/tutor/";
@@ -55,5 +55,43 @@
         }
 
         header("location: ../view/tutor/tutorprofile.php");
+    }
+    elseif (isset($_GET["update_day"])) {
+        $id = $_GET["tutor_id"];
+        $day = $_GET["new_day"];
+        $new_to_time = $_GET["new_to_time"];
+        $new_fro_time = $_GET["new_fro_time"];
+
+        updateTutorBookDay($id, $day, $new_to_time, $new_fro_time);
+
+        header("location: ../view/tutor/booksettings.php");
+
+    }
+    elseif (isset($_GET["delete_day"])) {
+        $id = $_GET["t_id"];
+        $day = $_GET["day_id"];
+
+        removeTutorBookDay($id, $day);
+
+        header("location: ../view/tutor/booksettings.php");
+    }
+    elseif (isset($_GET["update_course"])) {
+        $course = $_GET["course_id"];
+        $id = $_GET["tutor_id"];
+        $new_course = $_GET["new_course"];
+        $new_rate = $_GET["new_rate"];
+
+        updateTutorCourse($id, $course, $new_course, $new_rate);
+
+        header("location: ../view/tutor/booksettings.php");
+
+    }
+    elseif (isset($_GET["delete_course"])) {
+        $id = $_GET["t_id"];
+        $course = $_GET["c_id"];
+
+        removeTutorCourse($id, $course);
+
+        header("location: ../view/tutor/booksettings.php");
     }
 ?>

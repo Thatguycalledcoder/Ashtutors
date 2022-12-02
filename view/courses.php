@@ -2,7 +2,7 @@
     session_start();
     require_once dirname(__FILE__)."/../functions/checks.php";
     require_once dirname(__FILE__)."/../functions/student_view_fxn.php";
-    // checkLogin();
+    checkLoginStudent();
 ?>
 
 <!DOCTYPE html>

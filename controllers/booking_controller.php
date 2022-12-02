@@ -3,9 +3,9 @@
 require dirname (__FILE__)."/../classes/booking_class.php";
 
 //--INSERT--//
-function addBooking($s_id, $t_id, $hours, $time, $date) {
+function addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
     $crud = new Booking_class;
-    $request = $crud->addBooking($s_id, $t_id, $hours, $time, $date);
+    $request = $crud->addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours);
 
     if($request) 
         return true;

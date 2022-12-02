@@ -8,6 +8,7 @@
 }
 body {
     margin: 0;
+    scroll-behavior: smooth;
 }
 nav {
     background-color: var(--back-theme);
@@ -131,6 +132,13 @@ img#single-img {
 }
 .spacer {
     padding-left: 200px;
+}
+.ovfw-ctrl {
+    height: 88%;
+    overflow: auto;
+}
+.ovfw-ctrl::-webkit-scrollbar {
+    display: none;
 }
 
 /* Tutors */

@@ -1,13 +1,14 @@
 <?php
     session_start();
-    require dirname(__FILE__) . "/../functions/checks.php";
+    require_once dirname(__FILE__) . "/../functions/checks.php";
     require_once dirname(__FILE__)."/../functions/student_view_fxn.php";
+    require_once dirname(__FILE__)."/../functions/general_display.php";
 
     checkLoginStudent();
-    if (!(isset($_GET["tid"]))) {
+    if (!(isset($_GET["tutor_id"]))) {
         header("location: tutors.php");
     }
-    $tid = $_GET["tid"];
+    $tid = $_GET["tutor_id"];
     $tutor = studentGetTutorDetails($tid);
 ?>
 
@@ -62,11 +63,19 @@
             <figure class="head-fig">
                 <img class="head-img" src="" alt="Header image">
             </figure>
+            <section class="main-sec">
+                <h1>
+                    Book a Tutor
+                </h1>
+            </section>
         </header>
         <section class="main-sec">
-            <figure class="align-text">
-                <img id="single-img" src="../images/icons/user-default.png" alt="Tutor image">
+            <figure>
+                <div id="img-frame">
+                    <img id="single-img" src="../images/icons/user-default.png" alt="Tutor image">
+                </div>
                 <figcaption class="tutor-one">
+                <form class="book-form" action="../actions/book_actions.php" method="GET">
                     <ul class="account-details">
                         <li>
                             <strong>Name:</strong>
@@ -77,20 +86,47 @@
                             <span><?php echo $tutor["major_name"] ?></span>
                         </li>
                         <li>
-                        <strong>Courses - Rate:</strong>
+                            <strong>Courses - Rate:</strong>
                             <span><?php studentDisplayTutorCourses($tid) ?></span>
                         </li>
                         <li>
-                        <strong> Available times:</strong>
+                            <strong> Available times:</strong>
                             <span><?php studentDisplayTutorDays($tid) ?></span>
                         </li>
+                        <li>
+                            <strong> Course:</strong>
+                            <select name="course">
+                                <?php
+                                    displayCourses();
+                                ?>
+                            </select>
+                        </li>
+                        <li>
+                            <strong> Available times:</strong>
+                            <select name="book_day">
+                                <?php
+                                    displayBookDays();
+                                ?>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="book_time">Appointment Time:</label>
+                            <input type="time" name="book_time" id="book_time" required>
+                        </li>
+                        <li>
+                            <label for="book_hour">Number of hours:</label>
+                            <input type="number" name="book_hours" id="book_hour" min="0" required>
+                        </li>
+                        <input type="hidden" name="major" value="<?php echo $tutor["tutor_major"] ?>">
+                        <input type="hidden" name="student_id" value="<?php echo $_SESSION["id"] ?>">
+                        <input type="hidden" name="tutor_id" value="<?php echo $tutor["tutor_id"] ?>">
+                        <button type="submit" name="book_tutor" class="book-btn">Book</button>
+                        
                     </ul>
+                    </form>
                 </figcaption>
-            </figure>
-            <form class="book-form" action="book-tutor.php" method="GET">
-                <input type="hidden" name="tutor_id" value="<?php echo $tutor["tutor_id"] ?>">
-                <button type="submit" class="book-btn">Book Now</button>
-            </form>
+            </figure>          
+         
         </section>
         <footer>
 

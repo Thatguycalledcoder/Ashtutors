@@ -81,6 +81,67 @@ function getTutors() {
     }
 } 
 
+function getAvailableTutors() {
+    $crud = new Tutor_class;
+    $request = $crud->getAvailableTutors();
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+} 
+
+function getAvailableTutorsByCourse($course_id) {
+    $crud = new Tutor_class;
+    $request = $crud->getAvailableTutorsByCourse($course_id);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+} 
+
+function getSelectedTutor($tutor_id) {
+    $crud = new Tutor_class;
+    $request = $crud->getSelectedTutor($tutor_id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
+function getSearchedTutors($major, $year, $country) {
+    $crud = new Tutor_class;
+    $request = $crud->getSearchedTutors($major, $year, $country);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+} 
+
 function getTutorDetails($tutor_id) {
     $crud = new Tutor_class;
     $request = $crud->getTutorDetails($tutor_id);
@@ -169,9 +230,9 @@ function updateAvailability($id, $avail) {
         return false;
 }
 
-function updateTutorCourse($tutor_id, $course_id) {
+function updateTutorCourse($tutor_id, $course_id, $new_course, $rate) {
     $crud = new Tutor_class;
-    $request = $crud->updateTutorCourse($tutor_id, $course_id);
+    $request = $crud->updateTutorCourse($tutor_id, $course_id, $new_course, $rate);
 
     if($request) 
         return true;
@@ -179,9 +240,9 @@ function updateTutorCourse($tutor_id, $course_id) {
         return false;
 }
 
-function updateTutorBookDay($tutor_id, $bookday_id) {
+function updateTutorBookDay($tutor_id, $bookday_id, $starttime, $endtime) {
     $crud = new Tutor_class;
-    $request = $crud->updateTutorBookDay($tutor_id, $bookday_id);
+    $request = $crud->updateTutorBookDay($tutor_id, $bookday_id, $starttime, $endtime);
 
     if($request) 
         return true;

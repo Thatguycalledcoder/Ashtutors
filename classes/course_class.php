@@ -32,6 +32,13 @@ class Course_class extends db_connection
 		return $this->run_query($sql);
     }
 
+	function getCourseOnly($id) {
+        $sql = "SELECT course.course_id, course.course_name, course.course_major 
+		FROM course
+		WHERE course.course_id = '$id'";
+		return $this->run_query($sql);
+    }
+
 	function getCoursesAndTutors() {
 		$sql = "SELECT course_id, course_name, major.major_name, COUNT(course_id) AS 'num_tutors' 
 				FROM course, major WHERE course.course_id IN 

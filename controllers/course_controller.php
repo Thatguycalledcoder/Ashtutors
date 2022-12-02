@@ -55,6 +55,22 @@ function getCourse($id) {
     }
 }
 
+function getCourseOnly($id) {
+    $crud = new Course_class;
+    $request = $crud->getCourseOnly($id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
 function getCoursesAndTutors() {
     $crud = new Course_class;
     $request = $crud->getCoursesAndTutors();

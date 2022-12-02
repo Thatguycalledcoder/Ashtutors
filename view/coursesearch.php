@@ -1,7 +1,14 @@
 <?php
     session_start();
     require dirname(__FILE__)."/../functions/checks.php";
-    // checkLogin();
+    require dirname(__FILE__)."/../functions/student_view_fxn.php";
+    checkLoginStudent();
+
+    if (!(isset($_GET["cid"]))) {
+        header("location: courses.php");
+    }
+
+    $cid = $_GET["cid"];
 ?>
 
 <!DOCTYPE html>
@@ -55,49 +62,15 @@
             </figure>
             <section class="main-sec">
                 <h1>
-                    Course searched
+                    Course Searched: <?php echo displayCourseSearched($cid) ?>
                 </h1>
             </section>
         </header>
         <section class="main-sec">
             <ul class="main-list">
-                <li class="tutor-list">
-                    <figure class="tutor-nav-fig">
-                        <img class="tutor-fig-img" src="../images/icons/user-default.png" alt="Tutor image">
-                        <figcaption>
-                            <ul class="tutor-details">
-                                <li>
-                                    <strong>Name:</strong>
-                                    <span><strong>Dave King</strong></span>
-                                </li>
-                                <li>
-                                    Courses:
-                                    <span>Data Structures and Algorithms, Venture Capital</span>
-                                </li>
-                                <li>
-                                    Available hours:
-                                    <span>5:00pm - 8:00pm</span>
-                                </li>
-                                <li>
-                                    Rate:
-                                    <span>GHS30.00 per hour</span>
-                                </li>
-                            </ul>
-                        </figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="tutor-nav-fig">
-                        <img class="tutor-fig-img" src="../images/icons/user-default.png" alt="Tutor image">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="tutor-nav-fig">
-                        <img class="tutor-fig-img" src="../images/icons/user-default.png" alt="Tutor image">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
+               <?php
+                    studentDisplayTutorsByCourse($cid);
+               ?>
             </ul>
         </section>
         <footer>

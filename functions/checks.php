@@ -19,6 +19,14 @@
         }
     }
 
+    function checkLogoutTutor() {
+        if (isset($_GET["logout"])) {
+            session_unset();
+            session_destroy();
+            header("Location: dirname(__FILE__)./../../../login/logintutor.php");
+        }
+    }
+
     function checkAdmin() {
         if (!isset($_SESSION["admin_sts"])) {
             header("location: dirname(__FILE__)./../login/login.php");

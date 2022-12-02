@@ -43,8 +43,40 @@ class Tutor_class extends db_connection
 		return $this->run_query($sql);
 	}
 
+	function getAvailableTutors() {
+		$sql = "SELECT tutor.*, major.major_name FROM tutor, major 
+				WHERE tutor_availability = 1 AND tutor.tutor_major = major.major_id";
+		return $this->run_query($sql);
+	}
+
+	function getAvailableTutorsByCourse($course_id) {
+		$sql = "SELECT tutor.*, major.major_name FROM tutor, major 
+				WHERE tutor_availability = 1 AND tutor.tutor_major = major.major_id
+				AND '$course_id' IN 
+					(SELECT course_id FROM tutor_available_courses)
+				AND tutor.tutor_id IN
+					(SELECT tutor_id FROM tutor_available_courses)";
+		return $this->run_query($sql);
+	}
+
+	function getSelectedTutor($tutor_id) {
+		$sql = "SELECT tutor.*, major.major_name FROM tutor, major 
+				WHERE tutor_availability = 1 AND tutor.tutor_major = major.major_id
+				AND tutor.tutor_id = '$tutor_id'";
+		return $this->run_query($sql);
+	}
+
+	function getSearchedTutors($major, $year, $country) {
+		$sql = "SELECT tutor.*, major.major_name FROM tutor, major 
+				WHERE tutor.tutor_major = major.major_id AND 
+				(major.major_name LIKE '%$major%' OR tutor.tutor_year LIKE '%$year%' OR tutor.tutor_country LIKE '%$country%')";
+		return $this->run_query($sql);
+	}
+
 	function getTutorDetails($tutor_id) {
-		$sql = "SELECT * FROM tutor WHERE tutor_id = '$tutor_id'";
+		$sql = "SELECT tutor.*, major.major_name FROM tutor, major 
+		WHERE tutor_availability = 1 AND tutor.tutor_major = major.major_id 
+		AND tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}
 
@@ -84,13 +116,14 @@ class Tutor_class extends db_connection
 		return $this->run_query($sql);
     }
 
-	function updateTutorCourse($tutor_id, $course_id) {
-		$sql = "UPDATE tutor_courses SET course_id = '$course_id' WHERE tutor_id = '$tutor_id'";
+	function updateTutorCourse($tutor_id, $course_id, $new_course, $rate) {
+		$sql = "UPDATE tutor_available_courses SET course_id = '$new_course', rate = '$rate' 
+				WHERE tutor_id = '$tutor_id' AND course_id = '$course_id'";
 		return $this->run_query($sql);
 	}
 
-	function updateTutorBookDay($tutor_id, $bookday_id) {
-		$sql = "UPDATE tutor_book_day SET bookday_id = '$bookday_id' WHERE tutor_id = '$tutor_id'";
+	function updateTutorBookDay($tutor_id, $bookday_id, $starttime, $endtime) {
+		$sql = "UPDATE tutor_available_booking SET bookday_id = '$bookday_id', start_time = '$starttime', end_time = '$endtime' WHERE tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}
 
@@ -101,12 +134,12 @@ class Tutor_class extends db_connection
 
 	//--DELETE--//
 	function removeTutorCourse($tutor_id, $course_id) {
-		$sql = "DELETE FROM tutor_courses WHERE tutor_id = '$tutor_id' AND course_id = '$course_id'";
+		$sql = "DELETE FROM tutor_available_courses WHERE tutor_id = '$tutor_id' AND course_id = '$course_id'";
 		return $this->run_query($sql);
 	}
 
 	function removeTutorBookDay($tutor_id, $bookday_id) {
-		$sql = "DELETE FROM tutor_book_day WHERE tutor_id = '$tutor_id' AND bookday_id = '$bookday_id'";
+		$sql = "DELETE FROM tutor_available_booking WHERE tutor_id = '$tutor_id' AND bookday_id = '$bookday_id'";
 		return $this->run_query($sql);
 	}
 

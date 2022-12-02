@@ -45,22 +45,6 @@
                 <h1>
                     Booking Settings
                 </h1>
-                <br>
-                <section class="sub-sec">
-                    <h3>Welcome, <?php echo $_SESSION["name"] ?>.</h3>
-                    <ul class="notifs">
-                        <li class="notif-item">
-                            <p>
-                                Upcoming appointment: YYYY-MM-DD (in x days)
-                            </p>
-                        </li>
-                        <li class="notif-item">
-                            <p>
-                                Pending appointments: 5
-                            </p>
-                        </li>
-                    </ul>        
-                </section>
             </section>
         </header>
         <section class="main-sec mb-5">
@@ -110,11 +94,12 @@
                     </div>
                 </div>
             </header>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         <td>Available day</td>
                         <td>Available Time</td>
+                        <td>Actions</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -164,11 +149,12 @@
                     </div>
                 </div>
             </header>
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
-                        <td>Coruse</td>
+                        <td>Course</td>
                         <td>Rate (per hour)</td>
+                        <td>Actions</td>
                     </tr>
                 </thead>
                 <tbody>

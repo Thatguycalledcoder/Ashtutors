@@ -11,9 +11,9 @@ class Booking_class extends db_connection
 	*@param takes a contact name, email, password, country, city, contact, image
 	*@return boolean
 	**/
-	function addBooking($s_id, $t_id, $hours, $time, $date) {
-		$sql = "INSERT INTO booking(student_id, tutor_id, no_hours, book_time, book_date)
-		VALUES ('$s_id', '$t_id', '$hours', '$time', '$date')";
+	function addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
+		$sql = "INSERT INTO booking(student_id, tutor_id, major, course, book_day, book_time, book_hours)
+		VALUES ('$student_id', '$tutor_id', '$major', '$course', '$book_day', '$book_time', '$book_hours')";
 		return $this->run_query($sql);
 	}
 

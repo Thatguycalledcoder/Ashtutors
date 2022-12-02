@@ -1,6 +1,8 @@
 <!-- Setting available days, seting hour rate, available time -->
 <?php
     session_start();
+    require_once dirname(__FILE__)."/../../functions/checks.php";
+    checkLogoutTutor();
 ?>
 <!DOCTYPE html>
 <html lang="en">

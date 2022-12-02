@@ -12,7 +12,7 @@
         return;
     }
 
-    if (isset($_GET["update"])) {
+    elseif (isset($_GET["update"])) {
         $id = $_GET["major_id"];
         $name = $_GET["new_major"];
     
@@ -22,7 +22,7 @@
         return;
     }
 
-    if (isset($_GET["delete"])) {
+    elseif (isset($_GET["delete"])) {
         $id = $_GET["major_id"];
 
         removeMajor($id);
