@@ -20,4 +20,23 @@
             header("location: ../view/tutors.php");
         }
     }
+    elseif (isset($_GET["update_book"])) {
+        $student_id = $_GET["student_id"];
+        $tutor_id = $_GET["tutor_id"];
+        $course = $_GET["course"];
+        $book_day = $_GET["book_day"];
+        $book_time = $_GET["book_time"];
+        $book_hours = $_GET["book_hours"];
+
+        updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours);
+
+        header("location: ../view/bookings.php");
+    }
+    elseif (isset($_GET["delete_book"])) {
+        $book_id = $_GET["bkid"];
+
+        removeBooking($book_id);
+
+        header("location: ../view/bookings.php");
+    }
 ?>

@@ -1,6 +1,25 @@
 <?php
+    require_once dirname(__FILE__)."/../controllers/booking_controller.php";
     require_once dirname(__FILE__)."/../controllers/course_controller.php";
     require_once dirname(__FILE__)."/../controllers/tutor_controller.php";
+
+    function studentDisplayBookDays() {
+        $days = getBookingDays();
+        foreach ($days as $key => $value) {
+            echo '
+                <option value="'.$value["bookday_id"].'">'.$value["book_day"].'</option>
+            ';
+        }
+    }
+
+    function displayTutorCourses() {
+        $courses = getCourses();
+        foreach ($courses as $key => $value) {
+            echo '
+                <option value="'.$value["course_id"].'">'.$value["course_name"].'</option>
+            ';
+        }
+    }
 
     function studentDisplayCourses() {
         $courses = getCoursesAndTutors();
@@ -233,4 +252,60 @@
             ';
         }
     }
-?>
+
+    function studentDisplayBookings($student_id) {
+        $bookings = getStudentBookings($student_id);
+        if (empty($bookings) || $bookings == false) {
+            echo "<h3>
+                    You have no bookings at the moment.
+                  </h3>";
+        }
+        else {
+            foreach ($bookings as $key => $value) {
+                echo '
+                <tr>
+                    <form action="../actions/book_actions.php">
+                    <td>'. $value["tutor_fname"] . " " . $value["tutor_lname"] .'</td>
+                    <td>
+                        <select name="course">
+                            <option value="'.$value["course"].'">'. $value["course_name"] .'(Selected)</option>';
+                            displayTutorCourses();
+                    echo  '</select>
+                    </td>
+                    <td>
+                        <select name="book_day">
+                            <option value="'.$value["book_day"].'">'.$value["bookday"].'(Selected)</option>';
+                            studentDisplayBookDays();
+                    echo  '</select>
+                    </td>
+                    <td><input type="time" name="book_time" value="'. $value["book_time"] .'"></td>
+                    <td><input type="number" name="book_hours" value="'. $value["book_hours"] .'"></td>
+                    <td>'. "GH₵" . $value["rate"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>
+                    <td>
+                        <input type="hidden" name="student_id" value="'.$student_id.'">
+                        <input type="hidden" name="tutor_id" value="'.$value["tutor_id"].'">
+                        <button type="submit" name="update_book" class="btn btn-warning">Update</button>
+                    </td>
+                    </form>
+                    <td>
+                        <a href="../actions/book_actions.php?delete_book=1&bkid='.$value["book_id"].'">
+                            <button class="btn btn-danger">Cancel</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="checkout.php?bkid='.$value["book_id"].'">
+                            <button class="btn btn-success">Pay</button>
+                        </a>
+                    </td>
+                </tr>
+                ';
+                    }
+        }
+
+    }
+    
+    function studentBookCheckout($book_id) {
+        return getStudentBooking($book_id);
+    }
+    ?>

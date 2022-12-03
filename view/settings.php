@@ -1,11 +1,11 @@
 <?php
-session_start();
-require_once dirname(__FILE__) . "/../functions/checks.php";
-require_once dirname(__FILE__) . "/../functions/major_course_fnx.php";
-require_once dirname(__FILE__)."/../controllers/student_controller.php";
-checkLoginStudent();
+    session_start();
+    require_once dirname(__FILE__) . "/../functions/checks.php";
+    require_once dirname(__FILE__) . "/../functions/major_course_fnx.php";
+    require_once dirname(__FILE__)."/../controllers/student_controller.php";
+    checkLoginStudent();
 
-$info = getStudentDetails($_SESSION["id"]);
+    $info = getStudentDetails($_SESSION["id"]);
 ?>
 
 <!DOCTYPE html>

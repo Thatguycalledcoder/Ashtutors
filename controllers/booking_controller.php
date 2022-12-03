@@ -13,11 +13,21 @@ function addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_ti
         return false;
 }
 
+function addBookingHistory($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
+    $crud = new Booking_class;
+    $request = $crud->addBookingHistory($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours);
+
+    if($request != false) 
+        return $request;
+    else
+        return false;
+}
+
 
 //--SELECT--//
-function getStudentBookings($s_id) {
+function getStudentBookings($student_id) {
     $crud = new Booking_class;
-    $request = $crud->getStudentBookings($s_id);
+    $request = $crud->getStudentBookings($student_id);
 
     if($request){
         $posts = array();
@@ -30,16 +40,17 @@ function getStudentBookings($s_id) {
     }
 }
 
-function getStudentBooking($s_id, $t_id) {
+function getStudentBooking($book_id) {
     $crud = new Booking_class;
-    $request = $crud->getStudentBooking($s_id, $t_id);
+    $request = $crud->getStudentBooking($book_id);
 
     if($request){
-        $posts = array();
-        while($record = $crud->fetch()){
-            $posts[] = $record;
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
         }
-        return $posts;
     }else{
         return false;
     }
@@ -77,9 +88,9 @@ function getBookingDays() {
 
 
 //--UPDATE--//
-function updateBooking($s_id, $t_id, $hours, $time, $date) {
+function updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours) {
     $crud = new Booking_class;
-    $request = $crud->updateBooking($s_id, $t_id, $hours, $time, $date);
+    $request = $crud->updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours);
 
     if($request) 
         return true;
@@ -89,9 +100,9 @@ function updateBooking($s_id, $t_id, $hours, $time, $date) {
 
 
 //--DELETE--//
-function removeBooking($s_id, $t_id) {
+function removeBooking($book_id) {
     $crud = new Booking_class;
-    $request = $crud->removeBooking($s_id, $t_id);
+    $request = $crud->removeBooking($book_id);
 
     if($request) 
         return true;
@@ -102,9 +113,9 @@ function removeBooking($s_id, $t_id) {
 
 
 // Make payment
-function makePayment($s_id, $amount, $date) {
+function makePayment($amount, $currency, $reference, $bookhist_id, $student_id, $tutor_id) {
     $crud = new Booking_class;
-    $request = $crud->makePayment($s_id, $amount, $date);
+    $request = $crud->makePayment($amount, $currency, $reference, $bookhist_id, $student_id, $tutor_id);
 
     if($request) 
         return true;
