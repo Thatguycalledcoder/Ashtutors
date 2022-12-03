@@ -2,6 +2,7 @@
 <?php
     session_start();
     require_once dirname(__FILE__)."/../../functions/checks.php";
+    require_once dirname(__FILE__)."/../../functions/tutor_view_fxn.php";
     checkLogoutTutor();
 ?>
 <!DOCTYPE html>
@@ -69,18 +70,18 @@
                 <thead>
                     <tr>
                         <td>Student Name</td>
-                        <td>Course Name</td>
+                        <td>Course</td>
+                        <td>Book Day</td>
+                        <td>Book Time</td>
                         <td>Number of hours</td>
-                        <td>Appointment Date</td>
+                        <td>Rate</td>
+                        <td>Total Cost</td>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Stanley Lumumba</td>
-                        <td>Heat Transfer</td>
-                        <td>3</td>
-                        <td>Monday 3pm</td>
-                    </tr>
+                    <?php
+                        displayTutorAppointments($_SESSION["id"]);
+                    ?>
                 </tbody>
             </table>
         </section>

@@ -1,5 +1,6 @@
 <?php
     require_once dirname(__FILE__)."/../controllers/tutor_controller.php";
+    require_once dirname(__FILE__)."/../controllers/booking_controller.php";
 
     function displayTutorAvailableDays($t_id) {
         $avail_times = getTutorAvailableDays($t_id);
@@ -56,4 +57,34 @@
             ';
         }
     }
+
+    function displayTutorAppointments($tutor_id) {
+        $bookings = getTutorBookingsAppointments($tutor_id);
+        if (empty($bookings) || $bookings == false) {
+            echo "<h3>
+                    You have no bookings at the moment.
+                  </h3>";
+        }
+        else {
+            foreach ($bookings as $key => $value) {
+                echo '
+                <tr>
+                    <td>'. $value["student_fname"] . " " . $value["student_lname"] .'</td>
+                    <td>
+                        '. $value["course_name"] .'
+                    </td>
+                    <td>
+                        '.$value["bookday"].'
+                    </td>
+                    <td>'. $value["book_time"] .'</td>
+                    <td>'. $value["book_hours"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>
+                </tr>
+                ';
+                    }
+        }
+
+    }
+    
 ?>

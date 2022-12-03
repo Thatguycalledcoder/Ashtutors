@@ -21,6 +21,24 @@
         }
     }
 
+    function displayCoursesForTutor($tutor_id) {
+        $courses = getTutorCourses($tutor_id);
+        foreach ($courses as $key => $value) {
+            echo '
+                <option value="'.$value["course_id"].'">'.$value["course_name"].'</option>
+            ';
+        }
+    }
+
+    function displayBookDaysForTutor($tutor_id) {
+        $courses = getBookingDaysForTutors($tutor_id);
+        foreach ($courses as $key => $value) {
+            echo '
+                <option value="'.$value["bookday_id"].'">'.$value["book_day"].'</option>
+            ';
+        }
+    }
+
     function studentDisplayCourses() {
         $courses = getCoursesAndTutors();
         if ($courses == false || empty($courses)) {
@@ -269,13 +287,13 @@
                     <td>
                         <select name="course">
                             <option value="'.$value["course"].'">'. $value["course_name"] .'(Selected)</option>';
-                            displayTutorCourses();
+                            displayCoursesForTutor($value["tutor_id"]);
                     echo  '</select>
                     </td>
                     <td>
                         <select name="book_day">
                             <option value="'.$value["book_day"].'">'.$value["bookday"].'(Selected)</option>';
-                            studentDisplayBookDays();
+                            displayBookDaysForTutor($value["tutor_id"]);
                     echo  '</select>
                     </td>
                     <td><input type="time" name="book_time" value="'. $value["book_time"] .'"></td>
@@ -298,6 +316,35 @@
                             <button class="btn btn-success">Pay</button>
                         </a>
                     </td>
+                </tr>
+                ';
+                    }
+        }
+
+    }
+
+    function studentDisplayBookingsHistory($student_id) {
+        $bookings = getStudentBookingsHistory($student_id);
+        if (empty($bookings) || $bookings == false) {
+            echo "<h3>
+                    You have no bookings at the moment.
+                  </h3>";
+        }
+        else {
+            foreach ($bookings as $key => $value) {
+                echo '
+                <tr>
+                    <td>'. $value["tutor_fname"] . " " . $value["tutor_lname"] .'</td>
+                    <td>
+                        '. $value["course_name"] .'
+                    </td>
+                    <td>
+                        '.$value["bookday"].'
+                    </td>
+                    <td>'. $value["book_time"] .'</td>
+                    <td>'. $value["book_hours"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>
                 </tr>
                 ';
                     }

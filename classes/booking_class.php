@@ -33,10 +33,24 @@ class Booking_class extends db_connection
         return $this->run_query($sql);
     }
 
+	function getStudentBookingsHistory($student_id) {
+        $sql = "SELECT bh.*, t.tutor_fname, t.tutor_lname, c.course_name, bd.book_day as bookday, tac.rate 
+				FROM book_history bh,tutor t, book_days bd, course c, tutor_available_courses tac 
+				WHERE bh.course = tac.course_id AND bh.tutor_id = t.tutor_id AND bh.course = c.course_id AND bh.book_day = bd.bookday_id AND student_id = '$student_id'";
+        return $this->run_query($sql);
+    }
+
+	function getTutorBookingsAppointments($tutor_id) {
+        $sql = "SELECT bh.*, s.student_fname, s.student_lname, c.course_name, bd.book_day as bookday, tac.rate 
+				FROM book_history bh, student s, book_days bd, course c, tutor_available_courses tac 
+				WHERE bh.course = tac.course_id AND bh.student_id = s.student_id AND bh.course = c.course_id AND bh.book_day = bd.bookday_id AND bh.tutor_id = '$tutor_id'";
+        return $this->run_query($sql);
+    }
+
     function getStudentBooking($book_id) {
 		$sql = "SELECT b.*, t.tutor_fname, t.tutor_lname, c.course_name, bd.book_day as bookday, tac.rate 
 				FROM booking b,tutor t, book_days bd, course c, tutor_available_courses tac 
-				WHERE book_id = '$book_id'";
+				WHERE b.course = tac.course_id AND b.tutor_id = t.tutor_id AND b.course = c.course_id AND b.book_day = bd.bookday_id AND book_id = '$book_id'";
         return $this->run_query($sql);
 	}
 
@@ -47,6 +61,11 @@ class Booking_class extends db_connection
 
 	function getBookingDays() {
 		$sql = "SELECT * FROM book_days";
+		return $this->run_query($sql);
+	}
+
+	function getBookingDaysForTutors($tutor_id) {
+		$sql = "SELECT * FROM `book_days` WHERE bookday_id IN (SELECT bookday_id FROM tutor_available_booking WHERE tutor_id = '$tutor_id')";
 		return $this->run_query($sql);
 	}
 
@@ -66,9 +85,9 @@ class Booking_class extends db_connection
 	}
 
 
-    function makePayment($amount, $currency, $reference, $bookhist_id, $student_id, $tutor_id) {
-        $sql = "INSERT INTO payment(amount, currency, reference, bookhist_id, student_id, tutor_id) 
-				VALUES ('$amount', '$currency', '$reference', '$bookhist_id', '$student_id', '$tutor_id')";
+    function makePayment($amount, $currency, $reference, $bookhist_id) {
+        $sql = "INSERT INTO payment(amount, currency, reference, bookhist_id) 
+				VALUES ('$amount', '$currency', '$reference', '$bookhist_id')";
         return $this->run_query($sql);
     }
 }

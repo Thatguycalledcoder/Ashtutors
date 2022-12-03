@@ -97,7 +97,7 @@
                             <strong> Course:</strong>
                             <select name="course">
                                 <?php
-                                    displayCourses();
+                                    displayCoursesForTutor($tid);
                                 ?>
                             </select>
                         </li>
@@ -105,7 +105,7 @@
                             <strong> Available times:</strong>
                             <select name="book_day">
                                 <?php
-                                    displayBookDays();
+                                    displayBookDaysForTutor($tid);
                                 ?>
                             </select>
                         </li>

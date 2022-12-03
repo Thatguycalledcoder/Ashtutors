@@ -69,9 +69,11 @@
                 <h1 class="spacer" style="margin-left: 16px">
                     <?php echo $_SESSION["name"] ?>
                 </h1>
-                <button class="update-btn">
-                    <a href="history.php">History</a>    
-                </button>
+                <a href="history.php">
+                    <button class="update-btn">
+                        History
+                    </button>
+                </a>    
             </section>
         </header>
         <section class="main-sec">

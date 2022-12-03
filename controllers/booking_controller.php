@@ -40,6 +40,36 @@ function getStudentBookings($student_id) {
     }
 }
 
+function getStudentBookingsHistory($student_id) {
+    $crud = new Booking_class;
+    $request = $crud->getStudentBookingsHistory($student_id);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
+function getTutorBookingsAppointments($tutor_id) {
+    $crud = new Booking_class;
+    $request = $crud->getTutorBookingsAppointments($tutor_id);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
 function getStudentBooking($book_id) {
     $crud = new Booking_class;
     $request = $crud->getStudentBooking($book_id);
@@ -86,6 +116,21 @@ function getBookingDays() {
     }
 }
 
+function getBookingDaysForTutors($tutor_id) {
+    $crud = new Booking_class;
+    $request = $crud->getBookingDaysForTutors($tutor_id);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
 
 //--UPDATE--//
 function updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours) {
@@ -113,9 +158,9 @@ function removeBooking($book_id) {
 
 
 // Make payment
-function makePayment($amount, $currency, $reference, $bookhist_id, $student_id, $tutor_id) {
+function makePayment($amount, $currency, $reference, $bookhist_id) {
     $crud = new Booking_class;
-    $request = $crud->makePayment($amount, $currency, $reference, $bookhist_id, $student_id, $tutor_id);
+    $request = $crud->makePayment($amount, $currency, $reference, $bookhist_id);
 
     if($request) 
         return true;

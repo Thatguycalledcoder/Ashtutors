@@ -19,7 +19,9 @@ nav {
     max-width: 95px;
     height: 100vh;
     float: left;
-    position: relative;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     z-index: 1;
 }
 ul {
