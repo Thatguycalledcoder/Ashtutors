@@ -74,7 +74,8 @@
                     <tr>
                         <td>Tutor Name</td>
                         <td>Course</td>
-                        <td>Book Day</td>
+                        <td>Tutor Contact</td>
+                        <td>Book Date</td>
                         <td>Book Time</td>
                         <td>Number of hours</td>
                         <td>Rate</td>

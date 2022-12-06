@@ -66,6 +66,11 @@
                 <h1>
                     Bookings
                 </h1>
+                <?php
+                    if (isset($_SESSION["book_update_msg"])) {
+                        echo $_SESSION["book_update_msg"];
+                    }
+                ?>
             </section>
         </header>
         <section class="main-sec">
@@ -75,6 +80,7 @@
                         <td>Tutor Name</td>
                         <td>Course</td>
                         <td>Book Day</td>
+                        <td>Book Date</td>
                         <td>Book Time</td>
                         <td>Number of hours</td>
                         <td>Rate</td>

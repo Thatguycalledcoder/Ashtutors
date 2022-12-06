@@ -1,9 +1,11 @@
-<!-- Number of tutors, number of students, total bookings till date, Total amount made
-
-     Add a major, view and edit a major; Add a course, view and edit a course
--->
 <?php
     session_start();
+
+    if (isset($_GET["logout_admin"])) {
+        session_unset();
+        session_destroy();
+        header("Location: dirname(__FILE__)./../../login/login.php");
+    }
    
 ?>
 

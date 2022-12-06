@@ -4,13 +4,6 @@
     $curl = curl_init();
     $data = $_GET["reference"];
     $book_id = $_GET["book_id"];
-    // $student_id = $_GET["student_id"];
-    // $tutor_id = $_GET["tutor_id"];
-    // $major_id = $_GET["major_id"];
-    // $course_id = $_GET["course_id"];
-    // $book_day = $_GET["book_day"];
-    // $book_time = $_GET["book_time"];
-    // $book_hours = $_GET["book_hours"];
 
     curl_setopt_array($curl, array(
       CURLOPT_URL => 'https://api.paystack.co/transaction/verify/'.$data,
@@ -43,14 +36,14 @@
         $request = getStudentBooking($book_id);
 
         if ($request != false) {
-          $request2 = addBookingHistory($request["student_id"], $request["tutor_id"], $request["major"], $request["course"], $request["book_day"], $request["book_time"], $request["book_hours"]);
+          $request2 = addBookingHistory($request["student_id"], $request["tutor_id"], $request["major"], $request["course"], $request["book_day"], $request["book_date"], $request["book_time"], $request["book_hours"]);
 
           if ($request2 != false) {
             removeBooking($book_id);
           }
           $bookhist_id = $request2;
           makePayment($amount, $currency, $reference, $bookhist_id);
-          echo $response->data->status;
+          echo $respons->data->statuse;
         }
         }
 

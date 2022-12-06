@@ -92,13 +92,6 @@
             </p>
             <form action="" id="form">
                 <input type="hidden" id="book_id" name="book_id" value="<?php echo $book_details["book_id"] ?>">
-                <!-- <input type="hidden" id="student_id" name="student_id" value="<?php echo $book_details["student_id"] ?>">
-                <input type="hidden" id="tutor_id" name="tutor_id" value="<?php echo $book_details["tutor_id"] ?>">
-                <input type="hidden" id="major" name="major" value="<?php echo $book_details["major"] ?>">
-                <input type="hidden" id="course" name="course" value="<?php echo $book_details["course"] ?>">
-                <input type="hidden" id="student_id" name="student_id" value="<?php echo $book_details["student_id"] ?>">
-                <input type="hidden" id="tutor_id" name="tutor_id" value="<?php echo $book_details["tutor_id"] ?>">
-                <input type="hidden" id="major" name="major" value="<?php echo $book_details["major"] ?>"> -->
                 <input type="hidden" id="email" name="email" value="<?php echo $info["student_email"] ?>">
                 <input type="hidden" id="amount" name="amount" value="<?php echo $book_details["rate"] * $book_details["book_hours"] ?>">
                 <button type="submit" class="btn btn-success" onclick="payWithPaystack(event)">Make Payment</button>

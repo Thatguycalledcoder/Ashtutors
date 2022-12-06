@@ -65,7 +65,7 @@
         </header>
         <section class="main-sec">
             <figure class="align-text">
-                <img id="single-img" src="../images/icons/user-default.png" alt="Tutor image">
+                <img id="single-img" src="<?php echo $tutor["tutor_image"] ?>" alt="Tutor image">
                 <figcaption class="tutor-one">
                     <ul class="account-details">
                         <li>

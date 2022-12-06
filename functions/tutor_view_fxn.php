@@ -74,7 +74,10 @@
                         '. $value["course_name"] .'
                     </td>
                     <td>
-                        '.$value["bookday"].'
+                        '. $value["student_email"] .' <br> '. $value["student_contact"] .'
+                    </td>
+                    <td>
+                        '.$value["book_date"].'
                     </td>
                     <td>'. $value["book_time"] .'</td>
                     <td>'. $value["book_hours"] .'</td>

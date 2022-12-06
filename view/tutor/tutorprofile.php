@@ -2,8 +2,14 @@
 session_start();
 require_once dirname(__FILE__) . "/../../functions/major_course_fnx.php";
 require_once dirname(__FILE__)."/../../controllers/tutor_controller.php";
+require_once dirname(__FILE__)."/../../functions/checks.php";
+
+    checkLoginTutor();
 
 $info = getTutorDetails($_SESSION["id"]);
+if ($info["tutor_image"] == "null") {
+    $info["tutor_image"] = "../images/icons/user-default.png";
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,28 +21,33 @@ $info = getTutorDetails($_SESSION["id"]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./../../css/tutor.css">
+    <link rel="stylesheet" href="../../css/main.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous" async defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous" async defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async defer></script>
 </head>
-
 <body>
-<nav>
-        <ul>
-            <li>
-                <a href="index.php">Home</a>
+    <nav>
+        <ul class="navi">
+            <li class="nav-links">
+                <a href="index.php">
+                    <img class="navcons" src="./../../images/icons/home-icon.svg" alt="Home" title="Home">
+                </a>
             </li>
-            <li>
-                <a href="booksettings.php">Booking Settings</a>
+            <li class="nav-links">
+                <a href="booksettings.php">
+                    <img class="navcons" src="./../../images/icons/settings-icon.svg" alt="Booking Settings" title="Booking Settings">
+                </a>
             </li>
-            <li>
-                <a href="tutorprofile.php">Profile</a>
+            <li class="nav-links">
+                <a href="tutorprofile.php">
+                    <img class="navcons" src="./../../images/icons/tutor-icon.svg" alt="Tutor profile" title="Tutor Profile">
+                </a>
             </li>
-            <li>
+            <li class="nav-links">
                 <a href="index.php?logout=1">
-                    Logout
+                    <img class="navcons" src="./../../images/icons/logout-icon.svg" alt="Logout" title="Logout">
                 </a>
             </li>
         </ul>
@@ -51,16 +62,14 @@ $info = getTutorDetails($_SESSION["id"]);
                 <h1 class="spacer" style="margin-left: 16px">
                     <?php echo $_SESSION["name"] ?>
                 </h1>
-                <button class="update-btn">
-                    <a href="history.php">History</a>    
-                </button>
+                <span></span>
             </section>
         </header>
         <section class="main-sec">
             <figure>
                 <div id="img-frame"> 
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#changeImageModal">
-                        <img id="single-img" src="<?php echo $info["tutor_image"] ?>" alt="Profile image">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#changeImageModal" class="btn-img-upload">
+                        <img class="img-upload-border" id="single-img" src="<?php echo "./../" . $info["tutor_image"] ?>" alt="Profile image" title="Upload image">
                     </button>
                     <div class="modal fade" id="changeImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

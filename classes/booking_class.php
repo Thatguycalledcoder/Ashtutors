@@ -11,15 +11,15 @@ class Booking_class extends db_connection
 	*@param takes a contact name, email, password, country, city, contact, image
 	*@return boolean
 	**/
-	function addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
-		$sql = "INSERT INTO booking(student_id, tutor_id, major, course, book_day, book_time, book_hours)
-		VALUES ('$student_id', '$tutor_id', '$major', '$course', '$book_day', '$book_time', '$book_hours')";
+	function addBooking($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours) {
+		$sql = "INSERT INTO booking(student_id, tutor_id, major, course, book_date, book_time, book_hours)
+		VALUES ('$student_id', '$tutor_id', '$major', '$course', '$book_date', '$book_time', '$book_hours')";
 		return $this->run_query($sql);
 	}
 
-	function addBookingHistory($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
-		$sql = "INSERT INTO book_history(student_id, tutor_id, major, course, book_day, book_time, book_hours)
-		VALUES ('$student_id', '$tutor_id', '$major', '$course', '$book_day', '$book_time', '$book_hours')";
+	function addBookingHistory($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours) {
+		$sql = "INSERT INTO book_history(student_id, tutor_id, major, course, book_date, book_time, book_hours)
+		VALUES ('$student_id', '$tutor_id', '$major', '$course', '$book_date', '$book_time', '$book_hours')";
 		$this->run_query($sql);
 		$last_id = mysqli_insert_id($this->database);
         return $last_id;
@@ -34,14 +34,14 @@ class Booking_class extends db_connection
     }
 
 	function getStudentBookingsHistory($student_id) {
-        $sql = "SELECT bh.*, t.tutor_fname, t.tutor_lname, c.course_name, bd.book_day as bookday, tac.rate 
+        $sql = "SELECT bh.*, t.tutor_fname, t.tutor_lname, t.tutor_contact, t.tutor_email, c.course_name, bd.book_day as bookday, tac.rate 
 				FROM book_history bh,tutor t, book_days bd, course c, tutor_available_courses tac 
 				WHERE bh.course = tac.course_id AND bh.tutor_id = t.tutor_id AND bh.course = c.course_id AND bh.book_day = bd.bookday_id AND student_id = '$student_id'";
         return $this->run_query($sql);
     }
 
 	function getTutorBookingsAppointments($tutor_id) {
-        $sql = "SELECT bh.*, s.student_fname, s.student_lname, c.course_name, bd.book_day as bookday, tac.rate 
+        $sql = "SELECT bh.*, s.student_fname, s.student_lname, s.student_email, s.student_contact, c.course_name, bd.book_day as bookday, tac.rate 
 				FROM book_history bh, student s, book_days bd, course c, tutor_available_courses tac 
 				WHERE bh.course = tac.course_id AND bh.student_id = s.student_id AND bh.course = c.course_id AND bh.book_day = bd.bookday_id AND bh.tutor_id = '$tutor_id'";
         return $this->run_query($sql);
@@ -71,8 +71,8 @@ class Booking_class extends db_connection
 
 
 	//--UPDATE--//
-    function updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours) {
-		$sql = "UPDATE booking SET course = '$course', book_day = '$book_day', book_time = '$book_time', book_hours = '$book_hours' 
+    function updateBooking($student_id, $tutor_id, $course, $book_date, $book_time, $book_hours) {
+		$sql = "UPDATE booking SET course = '$course', book_date = '$book_date', book_time = '$book_time', book_hours = '$book_hours' 
                 WHERE student_id = '$student_id' AND tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}

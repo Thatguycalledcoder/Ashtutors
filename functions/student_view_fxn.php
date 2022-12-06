@@ -290,14 +290,9 @@
                             displayCoursesForTutor($value["tutor_id"]);
                     echo  '</select>
                     </td>
-                    <td>
-                        <select name="book_day">
-                            <option value="'.$value["book_day"].'">'.$value["bookday"].'(Selected)</option>';
-                            displayBookDaysForTutor($value["tutor_id"]);
-                    echo  '</select>
-                    </td>
-                    <td><input type="time" name="book_time" value="'. $value["book_time"] .'"></td>
-                    <td><input type="number" name="book_hours" value="'. $value["book_hours"] .'"></td>
+                    <td><input type="date" name="book_date" value="'. $value["book_date"] .'" min="'.date("Y-m-d").'" required></td>
+                    <td><input type="time" name="book_time" value="'. $value["book_time"] .'" required></td>
+                    <td><input type="number" name="book_hours" value="'. $value["book_hours"] .'" required></td>
                     <td>'. "GH₵" . $value["rate"] .'</td>
                     <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>
                     <td>
@@ -339,7 +334,10 @@
                         '. $value["course_name"] .'
                     </td>
                     <td>
-                        '.$value["bookday"].'
+                        '. $value["tutor_email"] .' <br> '. $value["tutor_contact"] .'
+                    </td>
+                    <td>
+                    '.$value["book_date"].'
                     </td>
                     <td>'. $value["book_time"] .'</td>
                     <td>'. $value["book_hours"] .'</td>

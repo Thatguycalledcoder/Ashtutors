@@ -1,13 +1,13 @@
 <?php
     function checkLoginStudent() {
         if (!(isset($_SESSION["login_sts_student"]))) {
-            header("Location: dirname(__FILE__)./../login/login.php");
+            header("Location: dirname(__FILE__)./../../login/login.php");
         }
     }
 
     function checkLoginTutor() {
-        if (!(isset($_SESSION["login_sts_student"]))) {
-            header("Location: dirname(__FILE__)./../login/logintutor.php");
+        if (!(isset($_SESSION["login_sts_tutor"]))) {
+            header("Location: dirname(__FILE__)./../../../login/logintutor.php");
         }
     }
 

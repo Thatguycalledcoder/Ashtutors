@@ -70,9 +70,16 @@
             </section>
         </header>
         <section class="main-sec">
+            <strong>
+            <?php
+                if (isset($_SESSION["booking_msg"])) {
+                    echo $_SESSION["booking_msg"];
+                }
+            ?>
+            </strong>
             <figure>
                 <div id="img-frame">
-                    <img id="single-img" src="../images/icons/user-default.png" alt="Tutor image">
+                    <img id="single-img" src="<?php echo $tutor["tutor_image"] ?>" alt="Tutor image">
                 </div>
                 <figcaption class="tutor-one">
                 <form class="book-form" action="../actions/book_actions.php" method="GET">
@@ -102,12 +109,8 @@
                             </select>
                         </li>
                         <li>
-                            <strong> Available times:</strong>
-                            <select name="book_day">
-                                <?php
-                                    displayBookDaysForTutor($tid);
-                                ?>
-                            </select>
+                            <label for="book_date">Appointment Date:</label>
+                            <input type="date" name="book_date" id="book_date" min="<?php echo date('Y-m-d'); ?>" required>
                         </li>
                         <li>
                             <label for="book_time">Appointment Time:</label>

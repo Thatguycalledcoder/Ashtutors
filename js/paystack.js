@@ -1,10 +1,6 @@
 const email = document.getElementById('email');
 const amount = document.getElementById('amount');
 const bk_id = document.getElementById('book_id');
-// const stud_id = document.getElementById('student_id');
-// const tut_id = document.getElementById('tutor_id');
-// const major = document.getElementById('major');
-// const course = document.getElementById('course');
 const form = document.getElementById('form');
 
 
@@ -19,13 +15,10 @@ function payWithPaystack(e) {
             url: '../actions/process_payment.php?reference='+ response.reference,
             data: {
               book_id: bk_id.value
-              // student_id: stud_id.value,
-              // tutor_id: tut_id.value,
-              // major_id: major.value,
-              // course_id: course.value
             },
             method: 'get',
             success: function (response) {
+              alert(response)
                 if (response == "success") {
                     window.location = "./payment_success.php";
                 }

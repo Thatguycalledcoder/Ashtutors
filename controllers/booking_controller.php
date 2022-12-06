@@ -3,9 +3,9 @@
 require dirname (__FILE__)."/../classes/booking_class.php";
 
 //--INSERT--//
-function addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
+function addBooking($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours) {
     $crud = new Booking_class;
-    $request = $crud->addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours);
+    $request = $crud->addBooking($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours);
 
     if($request) 
         return true;
@@ -13,9 +13,9 @@ function addBooking($student_id, $tutor_id, $major, $course, $book_day, $book_ti
         return false;
 }
 
-function addBookingHistory($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours) {
+function addBookingHistory($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours) {
     $crud = new Booking_class;
-    $request = $crud->addBookingHistory($student_id, $tutor_id, $major, $course, $book_day, $book_time, $book_hours);
+    $request = $crud->addBookingHistory($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours);
 
     if($request != false) 
         return $request;
@@ -133,9 +133,9 @@ function getBookingDaysForTutors($tutor_id) {
 
 
 //--UPDATE--//
-function updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours) {
+function updateBooking($student_id, $tutor_id, $course, $book_date, $book_time, $book_hours) {
     $crud = new Booking_class;
-    $request = $crud->updateBooking($student_id, $tutor_id, $course, $book_day, $book_time, $book_hours);
+    $request = $crud->updateBooking($student_id, $tutor_id, $course, $book_date, $book_time, $book_hours);
 
     if($request) 
         return true;
