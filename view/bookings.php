@@ -60,7 +60,6 @@
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
             <section class="main-sec">
                 <h1>
@@ -79,7 +78,6 @@
                     <tr>
                         <td>Tutor Name</td>
                         <td>Course</td>
-                        <td>Book Day</td>
                         <td>Book Date</td>
                         <td>Book Time</td>
                         <td>Number of hours</td>

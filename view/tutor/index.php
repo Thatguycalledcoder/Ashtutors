@@ -3,6 +3,11 @@
     session_start();
     require_once dirname(__FILE__)."/../../functions/checks.php";
     require_once dirname(__FILE__)."/../../functions/tutor_view_fxn.php";
+    require_once dirname(__FILE__)."/../../controllers/booking_controller.php";
+
+    $tutor_up_apt = TutorGetUpcomingAppointment($_SESSION["id"]);
+    $tutor_up_apt_count = TutorAppointmentCount($_SESSION["id"]);
+
     checkLogoutTutor();
     checkLoginTutor();
 ?>
@@ -48,7 +53,6 @@
     <main>
         <header>
         <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
             <section class="main-sec">
                 <h1>
@@ -58,14 +62,14 @@
                 <section class="sub-sec">
                     <h3>Welcome, <?php echo $_SESSION["name"] ?>.</h3>
                     <ul class="notifs">
-                        <li class="notif-item">
+                    <li class="notif-item">
                             <p>
-                                Upcoming appointment: YYYY-MM-DD (in x days)
+                                Upcoming appointment: <?php echo date("d-D-M-Y",strtotime($tutor_up_apt["book_date"])) ?>
                             </p>
                         </li>
                         <li class="notif-item">
                             <p>
-                                Pending appointments: 5
+                                Pending appointments: <?php echo $tutor_up_apt_count["appointments"] ?>
                             </p>
                         </li>
                     </ul>        

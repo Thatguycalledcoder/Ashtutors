@@ -55,7 +55,6 @@ if ($info["tutor_image"] == "null") {
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
             <section class="main-sec divider">
                 <span></span>

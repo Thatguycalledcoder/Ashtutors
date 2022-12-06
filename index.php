@@ -1,6 +1,11 @@
 <?php
     session_start();
     require dirname(__FILE__)."/functions/checks.php";
+    require dirname(__FILE__)."/controllers/booking_controller.php";
+
+    $stud_up_apt = studentGetUpcomingAppointment($_SESSION["id"]);
+    $stud_up_apt_count = studentAppointmentCount($_SESSION["id"]);
+
     checkLoginStudent();
     checkLogout();
 ?>
@@ -52,7 +57,7 @@
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
+                <!-- <img class="head-img" src="" alt="Header image"> -->
             </figure>
             <section class="main-sec">
                 <h1>
@@ -64,12 +69,12 @@
                     <ul class="notifs">
                         <li class="notif-item">
                             <p>
-                                Upcoming appointment: YYYY-MM-DD (in x days)
+                                Upcoming appointment: <?php echo date("d-D-M-Y",strtotime($stud_up_apt["book_date"])) ?>
                             </p>
                         </li>
                         <li class="notif-item">
                             <p>
-                                Pending appointments: 5
+                                Pending appointments: <?php echo $stud_up_apt_count["appointments"] ?>
                             </p>
                         </li>
                     </ul>

@@ -77,9 +77,9 @@
                         '. $value["student_email"] .' <br> '. $value["student_contact"] .'
                     </td>
                     <td>
-                        '.$value["book_date"].'
+                        '.date("d-D-M-Y",strtotime($value["book_date"])).'
                     </td>
-                    <td>'. $value["book_time"] .'</td>
+                    <td>'. date("h:i A",strtotime($value["book_time"])) .'</td>
                     <td>'. $value["book_hours"] .'</td>
                     <td>'. "GH₵" . $value["rate"] .'</td>
                     <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>

@@ -60,7 +60,6 @@
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
         </header>
         <section class="main-sec">

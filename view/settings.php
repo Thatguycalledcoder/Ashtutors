@@ -62,7 +62,6 @@
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
             <section class="main-sec divider">
                 <span></span>
@@ -79,8 +78,8 @@
         <section class="main-sec">
             <figure>
                 <div id="img-frame"> 
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#changeImageModal">
-                        <img id="single-img" src="<?php echo $info["student_image"] ?>" alt="Profile image">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#changeImageModal" class="btn-img-upload">
+                        <img class="img-upload-border" id="single-img" src="<?php echo $info["student_image"] ?>" alt="Profile image">
                     </button>
                     <div class="modal fade" id="changeImageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

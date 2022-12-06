@@ -18,7 +18,6 @@ function payWithPaystack(e) {
             },
             method: 'get',
             success: function (response) {
-              alert(response)
                 if (response == "success") {
                     window.location = "./payment_success.php";
                 }

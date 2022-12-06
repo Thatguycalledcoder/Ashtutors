@@ -58,7 +58,6 @@
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
             <section class="main-sec">
                 <h1>
@@ -94,19 +93,6 @@
             </ul>
         </section>
         <footer>
-        <!-- <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
-  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div> -->
         </footer>
     </main>
 </body>

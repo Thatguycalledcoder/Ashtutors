@@ -69,7 +69,6 @@
     <main>
         <header>
             <figure class="head-fig">
-                <img class="head-img" src="" alt="Header image">
             </figure>
             <section class="main-sec">
                 <h1>
@@ -85,7 +84,7 @@
                 Course: <?php echo $book_details["course_name"] ?>
             </p>
             <p>
-                Appointment Time: <?php echo $book_details["bookday"] . " at " . $book_details["book_time"] ?>
+                Appointment Time: <?php echo date("d-D-M-Y",strtotime($book_details["book_date"])) . " at " . date("h:i A",strtotime($book_details["book_time"])) ?>
             </p>
             <p>
                 Amount: GH₵ <?php echo $book_details["rate"] * $book_details["book_hours"] ?>

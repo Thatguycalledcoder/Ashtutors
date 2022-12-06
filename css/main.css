@@ -68,6 +68,12 @@ footer {
     position: relative;
 }
 
+.head-img {
+    width: 1440px; 
+    position: relative;
+    
+}
+
 .align-text {
     text-align: center;
 }
@@ -89,6 +95,8 @@ img#single-img {
     margin-block: 16px;
     margin-left: 85px;
     margin-right: 15px;
+    position: relative;
+    z-index: 3;
 }
 .divider {
     width: 90%;
@@ -114,8 +122,10 @@ img#single-img {
 }
 .head-fig {
     width: 100%;
-    background-color: gray;
     height: 120px;
+    background: url("../images/icons/header.jpg");
+    background-position-y: 695px;
+    background-size: cover;
 }
 .nav-fig {
     background-color: gray;
@@ -169,6 +179,15 @@ img#single-img {
 .tutor-details {
     align-items: flex-start;
     margin: 16px;
+}
+.hover-border:hover {
+    border: 2px solid red;
+}
+.tutor-links {
+    color: black;
+}
+.tutor-links:hover {
+    color: black;
 }
 
 /* One Tutor */

@@ -126,8 +126,8 @@
             }
             echo '
             <li class="tutor-list">
-             <a href="tutor.php?tid='.$value["tutor_id"].'">
-                <figure class="tutor-nav-fig">
+             <a class="tutor-links" href="tutor.php?tid='.$value["tutor_id"].'">
+                <figure class="tutor-nav-fig hover-border">
                     <img class="tutor-fig-img" src="'.$value["tutor_image"].'" alt="Tutor image">
                     <figcaption>
                         <ul class="tutor-details ovfw-ctrl">
@@ -176,7 +176,7 @@
             echo '
             <li class="tutor-list">
                 <a href="tutor.php?tid='.$value["tutor_id"].'">
-                <figure class="tutor-nav-fig">
+                <figure class="tutor-nav-fig hover-border">
                     <img class="tutor-fig-img" src="'.$value["tutor_image"].'" alt="Tutor image">
                     <figcaption>
                         <ul class="tutor-details ovfw-ctrl">
@@ -337,9 +337,9 @@
                         '. $value["tutor_email"] .' <br> '. $value["tutor_contact"] .'
                     </td>
                     <td>
-                    '.$value["book_date"].'
+                    '.date("d-D-M-Y",strtotime($value["book_date"])).'
                     </td>
-                    <td>'. $value["book_time"] .'</td>
+                    <td>'. date("h:i A",strtotime($value["book_time"])) .'</td>
                     <td>'. $value["book_hours"] .'</td>
                     <td>'. "GH₵" . $value["rate"] .'</td>
                     <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>

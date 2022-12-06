@@ -36,14 +36,14 @@
         $request = getStudentBooking($book_id);
 
         if ($request != false) {
-          $request2 = addBookingHistory($request["student_id"], $request["tutor_id"], $request["major"], $request["course"], $request["book_day"], $request["book_date"], $request["book_time"], $request["book_hours"]);
+          $request2 = addBookingHistory($request["student_id"], $request["tutor_id"], $request["major"], $request["course"], $request["book_date"], $request["book_time"], $request["book_hours"]);
 
           if ($request2 != false) {
             removeBooking($book_id);
           }
           $bookhist_id = $request2;
           makePayment($amount, $currency, $reference, $bookhist_id);
-          echo $respons->data->statuse;
+          echo $response->data->status;
         }
         }
 

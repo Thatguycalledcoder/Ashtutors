@@ -70,6 +70,70 @@ function getTutorBookingsAppointments($tutor_id) {
     }
 }
 
+function tutorAppointmentCount($tutor_id) {
+    $crud = new Booking_class;
+    $request = $crud->tutorAppointmentCount($tutor_id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
+function studentAppointmentCount($student_id) {
+    $crud = new Booking_class;
+    $request = $crud->studentAppointmentCount($student_id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
+function studentGetUpcomingAppointment($student_id) {
+    $crud = new Booking_class;
+    $request = $crud->studentGetUpcomingAppointment($student_id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
+function tutorGetUpcomingAppointment($tutor_id) {
+    $crud = new Booking_class;
+    $request = $crud->tutorGetUpcomingAppointment($tutor_id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
 function getStudentBooking($book_id) {
     $crud = new Booking_class;
     $request = $crud->getStudentBooking($book_id);
