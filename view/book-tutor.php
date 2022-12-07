@@ -13,6 +13,7 @@
     if ($tutor["tutor_image"] == "null") {
         $tutor["tutor_image"] = "../images/icons/user-default.png";
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +78,9 @@
                 if (isset($_SESSION["booking_msg"])) {
                     echo $_SESSION["booking_msg"];
                 }
+            ?>
+            <?php
+                echo date_default_timezone_get();
             ?>
             </strong>
             <figure>
