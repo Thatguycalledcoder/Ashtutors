@@ -7,6 +7,13 @@
     $stud_up_apt = studentGetUpcomingAppointment($_SESSION["id"]);
     $stud_up_apt_count = studentAppointmentCount($_SESSION["id"]);
 
+    if ($stud_up_apt == false) {
+        $time = "None yet";
+    }
+    else {
+        $time = date("d-D-M-Y",strtotime($stud_up_apt["book_date"]));
+    }
+
     checkLoginStudent();
     checkLogout();
 ?>
@@ -71,7 +78,7 @@
                     <ul class="notifs">
                         <li class="notif-item">
                             <p>
-                                Upcoming appointment: <?php echo date("d-D-M-Y",strtotime($stud_up_apt["book_date"])) ?>
+                                Upcoming appointment: <?php echo $time ?>
                             </p>
                         </li>
                         <li class="notif-item">

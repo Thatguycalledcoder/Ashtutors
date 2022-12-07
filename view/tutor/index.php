@@ -8,7 +8,7 @@
     $tutor_up_apt = TutorGetUpcomingAppointment($_SESSION["id"]);
     $tutor_up_apt_count = TutorAppointmentCount($_SESSION["id"]);
 
-    if ($tutor_up_apt["book_date"] == false) {
+    if ($tutor_up_apt == false) {
         $time = "None yet";
     }
     else {

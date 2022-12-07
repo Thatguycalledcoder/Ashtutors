@@ -7,7 +7,7 @@ require_once dirname(__FILE__)."/../../functions/checks.php";
     checkLoginTutor();
 
 $info = getTutorDetails($_SESSION["id"]);
-if ($info["tutor_image"] == "null") {
+if ($info["tutor_image"] == null) {
     $info["tutor_image"] = "../images/icons/user-default.png";
 }
 ?>

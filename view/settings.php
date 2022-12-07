@@ -6,7 +6,7 @@
     checkLoginStudent();
 
     $info = getStudentDetails($_SESSION["id"]);
-    if ($info["student_image"] == "null") {
+    if ($info["student_image"] == null) {
         $info["student_image"] = "../images/icons/user-default.png";
     }
 ?>
