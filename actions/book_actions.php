@@ -33,7 +33,10 @@
                break;
             }
         }
-        echo "Check: " . $day_time_check;
+        
+        if ($day_time_check == true) {
+            echo "yes";
+        }
         if (!$day_time_check) {
             $_SESSION["booking_msg"] = "Time of booking not within tutor's range ";
             // header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
