@@ -68,12 +68,6 @@ footer {
     position: relative;
 }
 
-.head-img {
-    width: 1440px; 
-    position: relative;
-    
-}
-
 .align-text {
     text-align: center;
 }
@@ -95,8 +89,6 @@ img#single-img {
     margin-block: 16px;
     margin-left: 85px;
     margin-right: 15px;
-    position: relative;
-    z-index: 3;
 }
 .divider {
     width: 90%;
