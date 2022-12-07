@@ -25,10 +25,10 @@ session_start();
             Ash Tutors
         </h1>
         <h2 class="mb-4">
-            Welcome
+            Forgot Password
         </h2>
         <h5>
-           <span class="active">Student</span> / <span> <a href="logintutor.php">Tutor</a></span> 
+           <span class="active">Student</span> / <span> <a href="forgottutor.php">Tutor</a></span> 
         </h5>
         <?php
         if (isset($_SESSION["log_msg_student"])) {
@@ -36,18 +36,20 @@ session_start();
         }
         ?>
     </header>
-    <form class="mx-5 my-4" method="POST" id="form" action="./loginprocess.php">
+    <form class="mx-5 my-4" method="POST" id="form" action="./forgotprocess.php">
         <div class="form-floating mb-5">
             <input type="email" class="form-control" id="floatingEmail" name="stud_email" placeholder="John Doe" required>
             <label for="floatingEmail">Email address</label>
         </div>
         <div class="form-floating mb-5">
-            <input type="password" class="form-control" id="floatingPassword" name="stud_pass" placeholder="password" required>
-            <label for="floatingPassword">Password</label>
+            <input type="number" class="form-control" id="floatingYear" name="stud_year" placeholder="Year" required>
+            <label for="floatingYear">Year</label>
         </div>
-        <button type="submit" id="subbtn" name="login_student" onclick="validateLoginStudent(event)">Login</button><br><br>
-        <strong><a href="./forgot.php">Forgot password?</a></strong>
+        <div class="form-floating mb-5">
+            <input type="number" class="form-control" id="floatingContact" name="stud_num" placeholder="Contact" required>
+            <label for="floatingContact">Contact</label>
+        </div>
+        <button type="submit" id="subbtn" name="forgot_student" onclick="validateLoginStudent(event)">Validate</button><br><br>
     </form>
-    <strong><p>Not registered yet? <a href="./register.php">Register here</a></p></strong>
 </body>
 </html>

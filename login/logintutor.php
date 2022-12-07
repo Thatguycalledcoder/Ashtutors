@@ -45,7 +45,8 @@ session_start();
             <input type="password" class="form-control" id="floatingPassword" name="tutor_password" placeholder="password" required>
             <label for="floatingPassword">Password</label>
         </div>
-        <button type="submit" id="subbtn" name="login_tutor" onclick="validateLoginTutor(event)">Login</button>
+        <button type="submit" id="subbtn" name="login_tutor" onclick="validateLoginTutor(event)">Login</button><br><br>
+        <strong><a href="./forgottutor.php">Forgot password?</a></strong>
     </form>
     <strong><p>Not registered yet? <a href="./register.php">Register here</a></p></strong>
 </body>

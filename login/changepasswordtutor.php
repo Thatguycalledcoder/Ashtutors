@@ -25,29 +25,25 @@ session_start();
             Ash Tutors
         </h1>
         <h2 class="mb-4">
-            Welcome
+            Change Password
         </h2>
-        <h5>
-           <span class="active">Student</span> / <span> <a href="logintutor.php">Tutor</a></span> 
-        </h5>
         <?php
-        if (isset($_SESSION["log_msg_student"])) {
-            echo $_SESSION["log_msg_student"];
+        if (isset($_SESSION["log_msg_tutor"])) {
+            echo $_SESSION["log_msg_tutor"];
         }
         ?>
     </header>
-    <form class="mx-5 my-4" method="POST" id="form" action="./loginprocess.php">
+    <form class="mx-5 my-4" method="POST" id="form" action="./changeprocess.php">
         <div class="form-floating mb-5">
-            <input type="email" class="form-control" id="floatingEmail" name="stud_email" placeholder="John Doe" required>
-            <label for="floatingEmail">Email address</label>
-        </div>
-        <div class="form-floating mb-5">
-            <input type="password" class="form-control" id="floatingPassword" name="stud_pass" placeholder="password" required>
+            <input type="password" class="form-control" id="floatingPassword" name="tutor_pass" placeholder="John Doe" required>
             <label for="floatingPassword">Password</label>
         </div>
-        <button type="submit" id="subbtn" name="login_student" onclick="validateLoginStudent(event)">Login</button><br><br>
-        <strong><a href="./forgot.php">Forgot password?</a></strong>
+        <div class="form-floating mb-5">
+        <input type="password" class="form-control" id="floatingConfPassword" name="tutor_confpass" placeholder="John Doe" required>
+            <label for="floatingConfPassword">Confirm Password</label>
+        </div>
+        <input type="hidden" name="tutor_id" value="<?php echo $_SESSION["id"] ?>">
+        <button type="submit" id="subbtn" name="changepassword_tutor">Change Password</button><br><br>
     </form>
-    <strong><p>Not registered yet? <a href="./register.php">Register here</a></p></strong>
 </body>
 </html>

@@ -38,6 +38,11 @@ class Tutor_class extends db_connection
 		return $this->run_query($sql);
 	}
 
+	function validateForgotTutor($email, $year, $num) {
+		$sql = "SELECT * FROM tutor WHERE tutor_email = '$email' AND tutor_year = '$year' AND tutor_contact = '$num'";
+		return $this->run_query($sql);
+	}
+
 	function getTutors() {
 		$sql = "SELECT * FROM tutor";
 		return $this->run_query($sql);
@@ -90,6 +95,11 @@ class Tutor_class extends db_connection
 	function getTutorCourses($tutor_id) {
 		$sql = "SELECT tab.*, c.course_name FROM tutor_available_courses tab, course c 
 				WHERE tab.course_id = c.course_id AND tab.tutor_id = '$tutor_id'";
+		return $this->run_query($sql);
+	}
+
+	function getTutorAvailability($tutor_id) {
+		$sql = "SELECT tutor_availability FROM tutor WHERE tutor_id = '$tutor_id'";
 		return $this->run_query($sql);
 	}
 

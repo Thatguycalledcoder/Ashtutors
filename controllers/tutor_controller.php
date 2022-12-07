@@ -66,6 +66,22 @@ function validateLoginTutor($email, $password) {
     }
 }
 
+function validateForgotTutor($email, $year, $num) {
+    $crud = new Tutor_class;
+    $request = $crud->validateForgotTutor($email, $year, $num);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
 function getTutors() {
     $crud = new Tutor_class;
     $request = $crud->getTutors();
@@ -188,6 +204,22 @@ function getTutorCourses($tutor_id) {
         return false;
     }
 } 
+
+function getTutorAvailability($tutor_id) {
+    $crud = new Tutor_class;
+    $request = $crud->getTutorAvailability($tutor_id);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
 
 //--UPDATE--//
 function updateTutorInfo($id, $fname, $lname, $email, $country, $year, $major, $contact) {

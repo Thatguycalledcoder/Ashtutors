@@ -29,6 +29,11 @@ class Student_class extends db_connection
 		return $this->run_query($sql);
 	}
 
+	function validateForgotStudent($email, $year, $num) {
+		$sql = "SELECT student_id FROM student WHERE student_email = '$email' AND student_year = '$year' AND student_contact = '$num'";
+		return $this->run_query($sql);
+	}
+
 	function getStudentDetails($student_id) {
 		$sql = "SELECT * FROM student WHERE student_id = '$student_id'";
 		return $this->run_query($sql);

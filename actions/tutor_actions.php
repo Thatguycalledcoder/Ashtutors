@@ -94,4 +94,14 @@
 
         header("location: ../view/tutor/booksettings.php");
     }
+    elseif (isset($_GET["update_availability"])) {
+        $id = $_GET["tutor_id"];
+        $avail = $_GET["availability"];
+
+        updateAvailability($id, $avail);
+        header("location: ../view/tutor/booksettings.php");
+    }
+    else {
+        header("location: ../login/logintutor.php");
+    }
 ?>

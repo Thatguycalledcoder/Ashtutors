@@ -36,6 +36,13 @@ class Booking_class extends db_connection
 	function getStudentBookingsHistory($student_id) {
         $sql = "SELECT bh.*, t.tutor_fname, t.tutor_lname, t.tutor_contact, t.tutor_email, c.course_name, tac.rate 
 				FROM book_history bh,tutor t, course c, tutor_available_courses tac 
+				WHERE bh.course = tac.course_id AND bh.tutor_id = t.tutor_id AND bh.course = c.course_id AND student_id = '$student_id'";
+        return $this->run_query($sql);
+    }
+
+	function getStudentAppointments($student_id) {
+        $sql = "SELECT bh.*, t.tutor_fname, t.tutor_lname, t.tutor_contact, t.tutor_email, c.course_name, tac.rate 
+				FROM book_history bh,tutor t, course c, tutor_available_courses tac 
 				WHERE bh.book_date > CURRENT_DATE AND bh.course = tac.course_id AND bh.tutor_id = t.tutor_id AND bh.course = c.course_id AND student_id = '$student_id'";
         return $this->run_query($sql);
     }

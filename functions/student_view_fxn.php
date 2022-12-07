@@ -42,7 +42,7 @@
     function studentDisplayCourses() {
         $courses = getCoursesAndTutors();
         if ($courses == false || empty($courses)) {
-            echo 'No courses added yet.';
+            echo '<h1>No tutors available for any course yet.</h1>';
         }
         else {
             foreach ($courses as $key => $value) {
@@ -320,6 +320,38 @@
 
     function studentDisplayBookingsHistory($student_id) {
         $bookings = getStudentBookingsHistory($student_id);
+        if (empty($bookings) || $bookings == false) {
+            echo "<h3>
+                    You have no bookings at the moment.
+                  </h3>";
+        }
+        else {
+            foreach ($bookings as $key => $value) {
+                echo '
+                <tr>
+                    <td>'. $value["tutor_fname"] . " " . $value["tutor_lname"] .'</td>
+                    <td>
+                        '. $value["course_name"] .'
+                    </td>
+                    <td>
+                        '. $value["tutor_email"] .' <br> '. $value["tutor_contact"] .'
+                    </td>
+                    <td>
+                    '.date("d-D-M-Y",strtotime($value["book_date"])).'
+                    </td>
+                    <td>'. date("h:i A",strtotime($value["book_time"])) .'</td>
+                    <td>'. $value["book_hours"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] .'</td>
+                    <td>'. "GH₵" . $value["rate"] * $value["book_hours"] .'</td>
+                </tr>
+                ';
+                    }
+        }
+
+    }
+
+    function studentDisplayAppointments($student_id) {
+        $bookings = getStudentAppointments($student_id);
         if (empty($bookings) || $bookings == false) {
             echo "<h3>
                     You have no bookings at the moment.

@@ -5,7 +5,8 @@
     session_start();
 
     checkLoginTutor();
-    
+
+    $avail_status = getAvailability($_SESSION["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -59,9 +60,24 @@
         </header>
         <section class="main-sec mb-5">
             <header>
-                <h3>
-                    Your Availability
-                </h3>
+                <div class="divider">
+                    <h3>
+                        Your Availability
+                    </h3>
+                    <div>
+                        <h5>Availability Status: 
+                            <form action="../../actions/tutor_actions.php">
+                                <select name="availability">
+                                    <?php echo $avail_status ?>
+                                    <option value="1">Available</option>
+                                    <option value="0">Unavailable</option>
+                                </select>
+                                <input type="hidden" name="tutor_id" value="<?php echo $_SESSION["id"] ?>">
+                                <input class="btn btn-warning" type="submit" name="update_availability" value="Update">
+                            </form>
+                        </h5>
+                    </div>
+                </div>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#AddAvailableTimeModal" style="width: 185px;">
                      Add Available time +
                 </button>

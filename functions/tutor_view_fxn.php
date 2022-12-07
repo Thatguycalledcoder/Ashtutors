@@ -89,5 +89,15 @@
         }
 
     }
+
+    function getAvailability($tutor_id) {
+        $avail = getTutorAvailability($tutor_id)["tutor_availability"];
+        if ($avail == 1) {
+            return '<option value="1">Available (Selected)</option>';
+        }
+        else {
+            return '<option value="0">Unavailable (Selected)</option>';
+        }
+    }
     
 ?>

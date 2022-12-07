@@ -47,6 +47,22 @@ function validateLoginStudent($email, $password) {
     }
 }
 
+function validateForgotStudent($email, $year, $num) {
+    $crud = new Student_class;
+    $request = $crud->validateForgotStudent($email, $year, $num);
+
+    if($request){
+        $record = $crud->fetch();
+        if(!empty($record)){
+            return $record;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
 function getStudentDetails($student_id) {
     $crud = new Student_class;
     $request = $crud->getStudentDetails($student_id);

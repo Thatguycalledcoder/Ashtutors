@@ -55,6 +55,21 @@ function getStudentBookingsHistory($student_id) {
     }
 }
 
+function getStudentAppointments($student_id) {
+    $crud = new Booking_class;
+    $request = $crud->getStudentAppointments($student_id);
+
+    if($request){
+        $posts = array();
+        while($record = $crud->fetch()){
+            $posts[] = $record;
+        }
+        return $posts;
+    }else{
+        return false;
+    }
+}
+
 function getTutorBookingsAppointments($tutor_id) {
     $crud = new Booking_class;
     $request = $crud->getTutorBookingsAppointments($tutor_id);

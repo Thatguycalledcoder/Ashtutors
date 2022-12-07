@@ -1,7 +1,8 @@
 <?php
     session_start();
-    require dirname(__FILE__)."/functions/checks.php";
-    require dirname(__FILE__)."/controllers/booking_controller.php";
+    require_once dirname(__FILE__)."/functions/checks.php";
+    require_once dirname(__FILE__) . "/functions/student_view_fxn.php";
+    require_once dirname(__FILE__)."/controllers/booking_controller.php";
 
     $stud_up_apt = studentGetUpcomingAppointment($_SESSION["id"]);
     $stud_up_apt_count = studentAppointmentCount($_SESSION["id"]);
@@ -18,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="./css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
     <nav>
@@ -83,26 +85,27 @@
             </section>
         </header>
         <section class="main-sec">
-            <ul>
-                <li>
-                    <figure class="nav-fig">
-                        <img src="" alt="">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="nav-fig">
-                        <img src="" alt="">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure class="nav-fig">
-                        <img src="" alt="">
-                        <figcaption></figcaption>
-                    </figure>
-                </li>
-            </ul>
+        <table class="table">
+            <h4>Upcoming Appointments</h4>
+                <thead>
+                    <tr>
+                        <td>Tutor Name</td>
+                        <td>Course</td>
+                        <td>Tutor Contact</td>
+                        <td>Book Date</td>
+                        <td>Book Time</td>
+                        <td>Number of hours</td>
+                        <td>Rate</td>
+                        <td>Total Cost</td>
+                    </tr>
+                </thead>
+                <tbody>
+                   <?php
+                        studentDisplayAppointments($_SESSION["id"]);
+                   ?>
+                </tbody>
+            </table>
+        </section>
         </section>
         <footer>
 
