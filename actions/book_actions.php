@@ -39,6 +39,10 @@
             $_SESSION["booking_msg"] = "Time of booking not within tutor's range ";
             header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
         }
+        elseif ($book_hours > 20) {
+            $_SESSION["booking_msg"] = "You cannot book for more than twenty hours";
+            header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
+        }
         else {
             $request = addBooking($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours);
             if ($request) {
@@ -81,6 +85,10 @@
 
         if (!$day_time_check) {
             $_SESSION["book_update_msg"] = "Time of booking not within tutor's range ";
+            header('location: ../view/bookings.php');
+        }
+        elseif ($book_hours > 20) {
+            $_SESSION["book_update_msg"] = "You cannot book for more than twenty hours";
             header('location: ../view/bookings.php');
         }
         else {
