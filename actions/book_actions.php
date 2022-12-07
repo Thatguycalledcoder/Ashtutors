@@ -5,6 +5,8 @@
     unset($_SESSION["booking_msg"]);
     unset($_SESSION["book_update_msg"]);
 
+    date_default_timezone_set('Europe/Berlin');
+
     if (isset($_GET["book_tutor"])) {
         $student_id = $_GET["student_id"];
         $tutor_id = $_GET["tutor_id"];
