@@ -8,6 +8,13 @@
     $tutor_up_apt = TutorGetUpcomingAppointment($_SESSION["id"]);
     $tutor_up_apt_count = TutorAppointmentCount($_SESSION["id"]);
 
+    if ($tutor_up_apt["book_date"] == false) {
+        $time = "None yet";
+    }
+    else {
+        $time = date("d-D-M-Y",strtotime($tutor_up_apt["book_date"]));
+    }
+
     checkLogoutTutor();
     checkLoginTutor();
 ?>
@@ -64,7 +71,7 @@
                     <ul class="notifs">
                     <li class="notif-item">
                             <p>
-                                Upcoming appointment: <?php echo date("d-D-M-Y",strtotime($tutor_up_apt["book_date"])) ?>
+                                Upcoming appointment: <?php echo $time ?>
                             </p>
                         </li>
                         <li class="notif-item">

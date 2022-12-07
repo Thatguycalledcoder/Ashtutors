@@ -59,10 +59,11 @@
     elseif (isset($_GET["update_day"])) {
         $id = $_GET["tutor_id"];
         $day = $_GET["new_day"];
+        $oldday = $_GET["old_day"];
         $new_to_time = $_GET["new_to_time"];
         $new_fro_time = $_GET["new_fro_time"];
 
-        updateTutorBookDay($id, $day, $new_to_time, $new_fro_time);
+        updateTutorBookDay($id, $day, $oldday, $new_to_time, $new_fro_time);
 
         header("location: ../view/tutor/booksettings.php");
 

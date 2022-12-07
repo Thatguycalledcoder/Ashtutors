@@ -12,6 +12,7 @@
                     <td>
                         <form action="../../actions/tutor_actions.php">
                             <input type="hidden" name="tutor_id" value="'.$t_id.'">
+                            <input type="hidden" name="old_day" value="'.$value["bookday_id"].'">
                             <select name="new_day" required>';
                                 
                                     displayBookDays();

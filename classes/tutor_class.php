@@ -132,8 +132,8 @@ class Tutor_class extends db_connection
 		return $this->run_query($sql);
 	}
 
-	function updateTutorBookDay($tutor_id, $bookday_id, $starttime, $endtime) {
-		$sql = "UPDATE tutor_available_booking SET bookday_id = '$bookday_id', start_time = '$starttime', end_time = '$endtime' WHERE tutor_id = '$tutor_id'";
+	function updateTutorBookDay($tutor_id, $bookday_id, $oldbookday_id, $starttime, $endtime) {
+		$sql = "UPDATE tutor_available_booking SET bookday_id = '$bookday_id', start_time = '$starttime', end_time = '$endtime' WHERE tutor_id = '$tutor_id' AND bookday_id = '$oldbookday_id'";
 		return $this->run_query($sql);
 	}
 

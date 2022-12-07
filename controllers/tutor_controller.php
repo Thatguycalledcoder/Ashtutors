@@ -272,9 +272,9 @@ function updateTutorCourse($tutor_id, $course_id, $new_course, $rate) {
         return false;
 }
 
-function updateTutorBookDay($tutor_id, $bookday_id, $starttime, $endtime) {
+function updateTutorBookDay($tutor_id, $bookday_id, $oldbookday_id, $starttime, $endtime) {
     $crud = new Tutor_class;
-    $request = $crud->updateTutorBookDay($tutor_id, $bookday_id, $starttime, $endtime);
+    $request = $crud->updateTutorBookDay($tutor_id, $bookday_id, $oldbookday_id, $starttime, $endtime);
 
     if($request) 
         return true;
