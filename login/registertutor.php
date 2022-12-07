@@ -75,20 +75,15 @@ require_once dirname(__FILE__)."/../functions/major_course_fnx.php";
                 <label for="floatingCountry">Country</label>
             </div>
             <div class="form-floating mb-5">
-                <input type="tel" class="form-control" id="floatingNumber" name="tutor_num" placeholder="0507921531" required>
+                <input type="tel" class="form-control" id="floatingNumber" minlength="10" name="tutor_num" placeholder="0507921531" required>
                 <label for="floatingNumber">Contact number</label>
             </div>
-            <!-- <div class="form-floating mb-5">
-                <input type="file" class="form-control" id="floatingImage" name="tutor_image" accept="image/png, image/jpeg, image/jpg,
-                image/hevc, image/heif, image/webp" required>
-                <label for="floatingNumber">Upload your profile image</label>
-            </div> -->
             <div class="form-floating mb-5">
-                <input type="password" class="form-control" id="floatingPassword" name="tutor_pass" placeholder="Password" required>
+                <input type="password" class="form-control" id="floatingPassword" minlength="8" name="tutor_pass" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
             </div>
             <div class="form-floating mb-5">
-                <input type="password" class="form-control" id="floatingConfirm" name="tutor_confpass" placeholder="Confirm password" required>
+                <input type="password" class="form-control" id="floatingConfirm" minlength="8" name="tutor_confpass" placeholder="Confirm password" required>
                 <label for="floatingConfirm">Confirm password</label>
             </div>
 

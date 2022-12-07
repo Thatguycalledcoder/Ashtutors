@@ -42,7 +42,7 @@ session_start();
             <label for="floatingEmail">Email address</label>
         </div>
         <div class="form-floating mb-5">
-            <input type="password" class="form-control" id="floatingPassword" name="tutor_password" placeholder="password" required>
+            <input type="password" class="form-control" id="floatingPassword" minlength="8" name="tutor_password" placeholder="password" required>
             <label for="floatingPassword">Password</label>
         </div>
         <button type="submit" id="subbtn" name="login_tutor" onclick="validateLoginTutor(event)">Login</button><br><br>

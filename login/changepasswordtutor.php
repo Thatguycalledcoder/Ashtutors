@@ -35,11 +35,11 @@ session_start();
     </header>
     <form class="mx-5 my-4" method="POST" id="form" action="./changeprocess.php">
         <div class="form-floating mb-5">
-            <input type="password" class="form-control" id="floatingPassword" name="tutor_pass" placeholder="John Doe" required>
+            <input type="password" class="form-control" id="floatingPassword" minlength="8" name="tutor_pass" placeholder="John Doe" required>
             <label for="floatingPassword">Password</label>
         </div>
         <div class="form-floating mb-5">
-        <input type="password" class="form-control" id="floatingConfPassword" name="tutor_confpass" placeholder="John Doe" required>
+        <input type="password" class="form-control" id="floatingConfPassword" minlength="8" name="tutor_confpass" placeholder="John Doe" required>
             <label for="floatingConfPassword">Confirm Password</label>
         </div>
         <input type="hidden" name="tutor_id" value="<?php echo $_SESSION["id"] ?>">

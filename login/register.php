@@ -76,15 +76,15 @@ require_once dirname(__FILE__)."/../functions/major_course_fnx.php";
                 <label for="floatingCountry">Country</label>
             </div>
             <div class="form-floating mb-5">
-                <input type="tel" class="form-control" id="floatingNumber" name="stud_num" placeholder="0507921531" required>
+                <input type="tel" class="form-control" id="floatingNumber" name="stud_num" minlength="10" placeholder="0507921531" required>
                 <label for="floatingNumber">Contact number</label>
             </div>
             <div class="form-floating mb-5">
-                <input type="password" class="form-control" id="floatingPassword" name="stud_pass" placeholder="Password" required>
+                <input type="password" class="form-control" id="floatingPassword" name="stud_pass" minlength="8" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
             </div>
             <div class="form-floating mb-5">
-                <input type="password" class="form-control" id="floatingConfirm" name="stud_confpass" placeholder="Confirm password" required>
+                <input type="password" class="form-control" id="floatingConfirm" name="stud_confpass" minlength="8" placeholder="Confirm password" required>
                 <label for="floatingConfirm">Confirm password</label>
             </div>
 
