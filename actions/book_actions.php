@@ -26,16 +26,17 @@
 
         foreach ($tutor_data as $key => $value) {
             if ($value["bookday_id"] - 1 == $day) {
+                echo $value["bookday_id"];
                if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && $book_time_end <= $value["end_time"]) {
                 $day_time_check = true;
                }
                break;
             }
         }
-
+        echo $day_time_check;
         if (!$day_time_check) {
             $_SESSION["booking_msg"] = "Time of booking not within tutor's range ";
-            header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
+            // header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
         }
         else {
             $request = addBooking($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours);
