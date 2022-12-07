@@ -13,13 +13,6 @@
     if ($tutor["tutor_image"] == "null") {
         $tutor["tutor_image"] = "../images/icons/user-default.png";
     }
-
-    $datetime = new DateTime('00:00:00');
-    $datetime->add(new DateInterval('PT'.$book_hours+1 .'H'));
-    $book_time_end = strtotime($datetime->format('H:i:s'));
-    $book_time_end = $book_time_end + strtotime($book_time);
-    $book_time_end = date("H:i:s", $book_time_end);
-    echo $book_time_end;
 ?>
 
 <!DOCTYPE html>
