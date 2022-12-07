@@ -31,11 +31,13 @@ require_once dirname(__FILE__)."/../functions/major_course_fnx.php";
         <h5>
            <span class="active">Student</span> / <span><a href="registertutor.php">Tutor</a></span> 
         </h5>
+        <strong>
         <?php
         if (isset($_SESSION["reg_msg_student"])) {
             echo $_SESSION["reg_msg_student"];
         }
         ?>
+        </strong>
     </header>
     <main>
         <form class="mx-5 my-4" method="POST" id="form" action="./registerprocess.php">

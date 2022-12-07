@@ -30,11 +30,13 @@ session_start();
         <h5>
            <span class="active">Student</span> / <span> <a href="logintutor.php">Tutor</a></span> 
         </h5>
+        <strong>
         <?php
         if (isset($_SESSION["log_msg_student"])) {
             echo $_SESSION["log_msg_student"];
         }
         ?>
+        </strong>
     </header>
     <form class="mx-5 my-4" method="POST" id="form" action="./loginprocess.php">
         <div class="form-floating mb-5">
