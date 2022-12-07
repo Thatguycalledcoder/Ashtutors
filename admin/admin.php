@@ -1,6 +1,10 @@
 <?php
     session_start();
 
+    if (!isset($_SESSION["admin_sts"])) {
+        header("location: ../login/login.php");
+    }
+
     if (isset($_GET["logout_admin"])) {
         session_unset();
         session_destroy();

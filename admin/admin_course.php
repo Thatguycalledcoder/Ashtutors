@@ -1,6 +1,10 @@
 <?php
     session_start();
     require_once dirname(__FILE__)."/../functions/major_course_fnx.php";
+
+    if (!isset($_SESSION["admin_sts"])) {
+        header("location: ../login/login.php");
+    }
 ?>
 
 <!DOCTYPE html>
