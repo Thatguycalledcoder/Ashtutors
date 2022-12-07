@@ -3,6 +3,8 @@
     require_once dirname(__FILE__)."/../controllers/course_controller.php";
     require_once dirname(__FILE__)."/../controllers/tutor_controller.php";
 
+    date_default_timezone_set('Europe/Berlin');
+
     function studentDisplayBookDays() {
         $days = getBookingDays();
         foreach ($days as $key => $value) {

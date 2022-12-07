@@ -24,21 +24,17 @@
         $datetime->add(new DateInterval('PT'.$book_hours+1 .'H'));
         $book_time_end = strtotime($datetime->format('H:i:s'));
         $book_time_end = $book_time_end + strtotime($book_time);
-        $book_time_end = date("H:i:s", $book_time_end);
+        $book_time_end = date("G:i", $book_time_end);
 
         foreach ($tutor_data as $key => $value) {
             if ($value["bookday_id"] - 1 == $day) {
-                echo "bookday" . $value["bookday_id"];
-               if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && $book_time_end <= $value["end_time"]) {
+               if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && $book_time_end >= date("G:i", strtotime($value["start_time"])) && $book_time_end <= date("G:i", strtotime($value["end_time"]))) {
                 $day_time_check = true;
                }
                break;
             }
         }
 
-        if ($day_time_check == true) {
-            echo "yes";
-        }
         if (!$day_time_check) {
             $_SESSION["booking_msg"] = "Time of booking not within tutor's range ";
             header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
@@ -70,11 +66,13 @@
         $datetime->add(new DateInterval('PT'.$book_hours+1 .'H'));
         $book_time_end = strtotime($datetime->format('H:i:s'));
         $book_time_end = $book_time_end + strtotime($book_time);
-        $book_time_end = date("H:i:s", $book_time_end);
+        $book_time_end = date("G:i", $book_time_end);
+        
+        
 
         foreach ($tutor_data as $key => $value) {
             if ($value["bookday_id"] - 1 == $day) {
-               if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && $book_time_end <= $value["end_time"]) {
+               if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && $book_time_end >= date("G:i", strtotime($value["start_time"])) && $book_time_end <= date("G:i", strtotime($value["end_time"]))) {
                 $day_time_check = true;
                }
                break;
