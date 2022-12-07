@@ -3,6 +3,8 @@
     require_once dirname(__FILE__) . "/../functions/checks.php";
     require_once dirname(__FILE__) . "/../functions/student_view_fxn.php";
     checkLoginStudent();
+    date_default_timezone_set('Europe/Berlin');
+
 ?>
 
 <!DOCTYPE html>
