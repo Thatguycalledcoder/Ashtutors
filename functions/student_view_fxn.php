@@ -95,10 +95,10 @@
             $count = false;
             foreach ($times as $key => $value) {
                 if ($count == true) {
-                    $time_list = $time_list . "; " . $value["book_day"] . ": " . $value["start_time"] . " - " . $value["end_time"];
+                    $time_list = $time_list . "; " . $value["book_day"] . "(" . date("h:i A",strtotime($value["start_time"])) . " - " . date("h:i A",strtotime($value["end_time"]) . ")");
                 }
                 else {
-                    $time_list = $value["book_day"] . "(" . $value["start_time"] . " - " . $value["end_time"] . ")";
+                    $time_list = $value["book_day"] . "(" . date("h:i A",strtotime($value["start_time"])) . " - " . date("h:i A",strtotime($value["end_time"])) . ")";
                 }
                 $count = true;
             }

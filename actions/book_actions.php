@@ -33,13 +33,13 @@
                break;
             }
         }
-        
+
         if ($day_time_check == true) {
             echo "yes";
         }
         if (!$day_time_check) {
             $_SESSION["booking_msg"] = "Time of booking not within tutor's range ";
-            // header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
+            header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
         }
         else {
             $request = addBooking($student_id, $tutor_id, $major, $course, $book_date, $book_time, $book_hours);
