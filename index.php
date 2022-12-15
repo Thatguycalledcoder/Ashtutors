@@ -14,7 +14,7 @@
         $time = date("d-D-M-Y",strtotime($stud_up_apt["book_date"]));
     }
 
-    checkLoginStudent();
+    checkLoginStudentIndex();
     checkLogout();
 ?>
 

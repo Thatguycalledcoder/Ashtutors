@@ -97,7 +97,7 @@
             $count = false;
             foreach ($times as $key => $value) {
                 if ($count == true) {
-                    $time_list = $time_list . "; " . $value["book_day"] . "(" . date("h:i A",strtotime($value["start_time"])) . " - " . date("h:i A",strtotime($value["end_time"]) . ")");
+                    $time_list = $time_list . "; " . $value["book_day"] . "(" . date("h:i A",strtotime($value["start_time"])) . " - " . date("h:i A",strtotime($value["end_time"])) . ")";
                 }
                 else {
                     $time_list = $value["book_day"] . "(" . date("h:i A",strtotime($value["start_time"])) . " - " . date("h:i A",strtotime($value["end_time"])) . ")";
@@ -125,8 +125,7 @@
                if ($value["tutor_image"] == null) {
                 $value["tutor_image"] = "../images/icons/user-default.png";
                }
-            }
-            echo '
+               echo '
             <li class="tutor-list">
              <a class="tutor-links" href="tutor.php?tid='.$value["tutor_id"].'">
                 <figure class="tutor-nav-fig hover-border">
@@ -159,6 +158,7 @@
                 </a>
             </li>
             ';
+            }
         }
     }
 

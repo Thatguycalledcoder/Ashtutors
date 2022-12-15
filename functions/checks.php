@@ -1,4 +1,10 @@
 <?php
+    function checkLoginStudentIndex() {
+        if (!(isset($_SESSION["login_sts_student"]))) {
+            header("Location: dirname(__FILE__)./../login/login.php");
+        }
+    }
+
     function checkLoginStudent() {
         if (!(isset($_SESSION["login_sts_student"]))) {
             header("Location: dirname(__FILE__)./../../login/login.php");

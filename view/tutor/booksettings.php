@@ -168,7 +168,7 @@
                             <div class="modal-footer">
                                 <input type="hidden" name="tutor_id" value="<?php echo $_SESSION["id"] ?>">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" name="add_course" class="btn btn-success">Add available date</button>
+                                <button type="submit" name="add_course" class="btn btn-success">Add available course</button>
                             </div>
                         </form>
                         </div>

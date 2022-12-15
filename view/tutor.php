@@ -9,6 +9,9 @@
     }
     $tid = $_GET["tid"];
     $tutor = studentGetTutorDetails($tid);
+    if ($tutor["tutor_image"] == null) {
+        $tutor["tutor_image"] = "../images/icons/user-default.png";
+       }
 ?>
 
 <!DOCTYPE html>

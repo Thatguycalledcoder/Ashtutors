@@ -28,7 +28,7 @@
 
         foreach ($tutor_data as $key => $value) {
             if ($value["bookday_id"] - 1 == $day) {
-               if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && $book_time_end >= date("G:i", strtotime($value["start_time"])) && $book_time_end <= date("G:i", strtotime($value["end_time"]))) {
+                if ($book_time >= $value["start_time"] && $book_time <= $value["end_time"] && strtotime($book_time_end) >= strtotime(date("G:i", strtotime($value["start_time"]))) && strtotime($book_time_end) <= strtotime(date("G:i", strtotime($value["end_time"])))) {
                 $day_time_check = true;
                }
                break;
@@ -37,7 +37,7 @@
 
         if (!$day_time_check) {
             $_SESSION["booking_msg"] = "Time of booking not within tutor's range ";
-            header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
+            // header('location: ../view/book-tutor.php?tutor_id='.$tutor_id);
         }
         elseif ($book_hours > 20) {
             $_SESSION["booking_msg"] = "You cannot book for more than twenty hours";
