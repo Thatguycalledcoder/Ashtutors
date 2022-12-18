@@ -81,6 +81,11 @@
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#AddAvailableTimeModal" style="width: 185px;">
                      Add Available time +
                 </button>
+                <?php
+                    if (isset($_SESSION["action_msg_book"])) {
+                        echo $_SESSION["action_msg_book"];
+                    }
+                ?>
                 <div class="modal fade" id="AddAvailableTimeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -143,6 +148,11 @@
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#AddCourseTimeModal">
                      Add a course +
                 </button>
+                <?php
+                    if (isset($_SESSION["action_msg_course"])) {
+                        echo $_SESSION["action_msg_course"];
+                    }
+                ?>
                 <div class="modal fade" id="AddCourseTimeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">

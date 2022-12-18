@@ -1,5 +1,7 @@
 <?php
     session_start();
+    unset($_SESSION["action_msg_book"]);
+    unset($_SESSION["action_msg_course"]);
     require_once dirname(__FILE__)."/../controllers/tutor_controller.php";
 
     if (isset($_GET["add_date"])) {
@@ -8,8 +10,14 @@
         $start_time = $_GET["to_time"];
         $end_time = $_GET["fro_time"];
 
-        registerTutorAvailableBookings($id, $book_day, $start_time, $end_time);
-
+        $request = updateTutorBookDay($id, $book_day, $book_day, $start_time, $end_time);
+        if ($request == false) {
+            registerTutorAvailableBookings($id, $book_day, $start_time, $end_time);
+        }
+        else {
+            $_SESSION["action_msg_book"] = "Book day already set. Updating previous book day.";
+        }
+     
         header("location: ../view/tutor/booksettings.php");
     }
     elseif (isset($_GET["add_course"])) {
@@ -17,7 +25,14 @@
         $course = $_GET["course"];
         $rate = $_GET["rate"];
 
-        registerTutorCourse($id, $course, $rate);
+        $request = updateTutorCourse($id, $course, $course, $rate);
+        if ($request == false) {
+            registerTutorCourse($id, $course, $rate);
+        }
+        else {
+            $_SESSION["action_msg_course"] = "Course and rate already set. Updating previous course and rate.";
+        }
+
         header("location: ../view/tutor/booksettings.php");
     }
     elseif (isset($_POST["update_profile"])) {
